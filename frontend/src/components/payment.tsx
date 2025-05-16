@@ -55,7 +55,9 @@ export default function Payment({ planType, price }: PaymentProps) {
             </div>
           </div>
         </div>
-        <Button className="rounded-full mt-2 w-1/2 self-center">Pay</Button>
+        <Button className="rounded-full mt-2 sm:w-1/2 sm:self-center">
+          Pay
+        </Button>
       </form>
     </>
   );

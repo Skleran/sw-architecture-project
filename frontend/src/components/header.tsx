@@ -1,3 +1,5 @@
+import ChangeThemeTabs from "./ui/theme-selector";
+
 export default function Header() {
   return (
     <>
@@ -5,6 +7,7 @@ export default function Header() {
         <p className="text-3xl my-3 font-semibold font-serif cursor-pointer tracking-tight">
           ArticleWorm
         </p>
+        <ChangeThemeTabs animationKey="change-theme" />
       </div>
     </>
   );

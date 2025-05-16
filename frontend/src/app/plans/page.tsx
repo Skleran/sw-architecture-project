@@ -1,11 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function Plans() {
-  const router = useRouter();
-
   return (
     <>
       <div className="container gap-6 mx-auto flex flex-col items-center justify-center">
