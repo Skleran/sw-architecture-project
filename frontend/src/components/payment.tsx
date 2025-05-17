@@ -42,16 +42,26 @@ export default function Payment({ planType, price }: PaymentProps) {
               type="number"
               id="card-number"
               placeholder="5555 5555 4444 4444"
+              className="font-mono"
             />
           </div>
           <div className="flex gap-6 sm:flex-1/2">
             <div className="flex flex-col w-full gap-2">
               <Label>Expiration</Label>
-              <Input id="expiration" placeholder="MM/YY" />
+              <Input
+                id="expiration"
+                placeholder="MM/YY"
+                className="font-mono"
+              />
             </div>
             <div className="flex flex-col gap-2 w-fit">
               <Label>Security Code</Label>
-              <Input type="number" id="security-code" placeholder="123" />
+              <Input
+                type="number"
+                id="security-code"
+                placeholder="123"
+                className="font-mono"
+              />
             </div>
           </div>
         </div>

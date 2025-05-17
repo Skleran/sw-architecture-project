@@ -30,7 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col items-center justify-center`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased grid grid-rows-[auto_1fr]`}
+        style={{ minHeight: "100dvh" }}
       >
         <ThemeProvider
           attribute="class"
@@ -38,8 +39,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
+          <Header /> {/* Making header sticky instead of fixed */}
+          <main className="flex items-center justify-center w-full">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
