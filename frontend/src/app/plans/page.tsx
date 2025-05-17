@@ -28,12 +28,12 @@ export default function Plans() {
 
   return (
     <>
-      <div className="container gap-6 mx-6 my-8 flex flex-col items-center justify-center">
-        <h1 className="text-3xl tracking-tight font-serif text-center pb-4">
+      <div className="container gap-6 mx-6 my-8 sm:mt-24 flex flex-col items-center justify-center">
+        <h1 className="text-3xl tracking-tight font-serif text-center pb-4 sm:pb-8 max-w-92">
           Support your favorite writers on ArticleWorm
         </h1>
         <div className="flex flex-col gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground sm:hidden">
             Select a billing option
           </p>
           <div className="w-full grid grid-cols-2 gap-0.5">
@@ -54,7 +54,7 @@ export default function Plans() {
             </Button>
           </div>
         </div>
-        <div className="flex flex-col mx-4 items-center gap-6 py-8 px-6 border-1 w-full rounded-2xl">
+        <div className="flex flex-col mx-4 items-center gap-6 py-8 px-6 border-1 w-full rounded-2xl sm:max-w-[360px]">
           <div className="w-fit h-fit p-2 border-2 border-muted-foreground rounded-full relative">
             <UserRound strokeWidth="1.4" className="size-20" />
             <Sparkle
