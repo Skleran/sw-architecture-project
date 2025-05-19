@@ -31,8 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased grid grid-rows-[auto_1fr]`}
-        style={{ minHeight: "100dvh" }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        // style={{ minHeight: "100dvh" }}
       >
         <ThemeProvider
           attribute="class"
@@ -40,11 +40,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          {/* <Navbar /> */}
           {/* <Header /> */}
-          <main className="flex items-center justify-center w-full">
-            {children}
-          </main>
+          <main className="">{children}</main>
         </ThemeProvider>
       </body>
     </html>

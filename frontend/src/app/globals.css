@@ -1,6 +1,57 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.my-a::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 3px;
+  bottom: 3px;
+  width: 1.5px;
+  border-radius: 2px;
+  background-color: var(--a-bg);
+  transition: opacity 0.25s ease;
+  opacity: var(--before-opacity, 1);
+}
+
+.my-line {
+  position: absolute;
+  left: 0;
+  top: calc(50% - 2px / 2);
+  opacity: var(--line-opacity, 1);
+  width: 18px;
+  height: 2px;
+  /* background-color: #fff; */
+  border-radius: 2px;
+  transform: scale(calc(180px / 18px), 5);
+  transform-origin: left center;
+  will-change: transform;
+  transition: transform 0.25s ease, opacity 0.25s ease,
+    background-color 0.25s ease;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

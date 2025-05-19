@@ -58,9 +58,9 @@ const Navbar = () => {
 
         // Mock categories data
         const mockCategories = [
-          { id: "1", name: "Technology" },
-          { id: "2", name: "Politics" },
-          { id: "3", name: "Sports" },
+          { id: "1", name: "Login" },
+          { id: "2", name: "Signup" },
+          { id: "3", name: "Plans" },
           { id: "4", name: "Health" },
           { id: "5", name: "Business" },
         ];
@@ -129,7 +129,7 @@ const Navbar = () => {
                 <div className="w-full h-[1px] bg-accent" />
               </SheetHeader>
               <div>
-                <p className="text-xl pl-6">Categories</p>
+                <p className="text-xl pl-6">Pages</p>
                 <div className="w-[calc(100%-40px)] ml-6 h-[1px] mt-1 bg-accent" />
               </div>
 

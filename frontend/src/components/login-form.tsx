@@ -199,12 +199,11 @@ export function LoginForm({
                   <div className="font-serif tracking-tight text-2xl dark:mix-blend-exclusion">
                     ArticleWorm
                   </div>
-                  <Button
-                    className="rounded-full hover:bg-neutral-400/40 text-[#171717] bg-neutral-200/35 h-8 items-center transition-colors"
-                    disabled
-                  >
-                    Back to Home
-                  </Button>
+                  <Link href="/">
+                    <Button className="rounded-full hover:bg-neutral-400/40 text-[#171717] bg-neutral-200/35 h-8 items-center transition-colors">
+                      Back to Home
+                    </Button>
+                  </Link>
                 </div>
                 <div className="mb-4 text-[#e8e8e8] dark:mix-blend-exclusion leading-6.5 text-xl font-serif">
                   A place to read, write <br /> and deepen your understanding
