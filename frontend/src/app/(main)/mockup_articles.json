@@ -1,0 +1,182 @@
+[
+  {
+    "author": {
+      "name": "Erdem Koyuncu",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "The Future of AI",
+    "excerpt": "Artificial intelligence is evolving rapidly. Experts predict breakthroughs in general AI within the next decade.",
+    "coverImage": "https://images.unsplash.com/photo-1747629382443-4176ca83b5de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "15h ago",
+    "likes": 858,
+    "comments": 133
+  },
+  {
+    "author": {
+      "name": "Mina Harper",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "My Trip to Iceland",
+    "excerpt": "Waking up to the northern lights was magical. The icy landscapes felt like another planet.",
+    "coverImage": "https://images.unsplash.com/photo-1747633126452-dee49902fc6e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "10h ago",
+    "likes": 293,
+    "comments": 57
+  },
+  {
+    "author": {
+      "name": "Alex Chen",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "How to Cook the Perfect Steak",
+    "excerpt": "Cooking steak is an art. The key lies in timing and temperature.",
+    "coverImage": "https://images.unsplash.com/photo-1747629382448-fde8a1fc8391?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "Apr 25",
+    "likes": 202,
+    "comments": 46
+  },
+  {
+    "author": {
+      "name": "Tariq Abdullah",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "The Rise of Electric Vehicles",
+    "excerpt": "EVs are reshaping transportation. Governments worldwide are setting deadlines to phase out gas cars.",
+    "coverImage": "https://images.unsplash.com/photo-1747607174999-0ca07c1ef75a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "1d ago",
+    "likes": 122,
+    "comments": 112
+  },
+  {
+    "author": {
+      "name": "Luna Velasquez",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "Why Cats Are the Best Pets",
+    "excerpt": "Independent, cute, and mysterious\u2014cats have it all. They also reduce stress in owners.",
+    "coverImage": "https://images.unsplash.com/photo-1747409020043-41d140928662?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "14h ago",
+    "likes": 518,
+    "comments": 69
+  },
+  {
+    "author": {
+      "name": "Noah Kim",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "SpaceX\u2019s Latest Launch",
+    "excerpt": "The rocket soared into the sky with precision. Another successful mission for SpaceX.",
+    "coverImage": "https://images.unsplash.com/photo-1747633322335-1790ca959e33?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "4d ago",
+    "likes": 720,
+    "comments": 42
+  },
+  {
+    "author": {
+      "name": "Sophia Singh",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "10 JavaScript Tricks You Didn\u2019t Know",
+    "excerpt": "From optional chaining to destructuring, JavaScript is full of hidden gems.",
+    "coverImage": "https://images.unsplash.com/photo-1747515203898-2df8f083f417?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "2d ago",
+    "likes": 453,
+    "comments": 83
+  },
+  {
+    "author": {
+      "name": "Liam O\u2019Connor",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "Strangest Conspiracies on the Internet",
+    "excerpt": "Some believe the moon isn\u2019t real. Others think birds are government drones.",
+    "coverImage": "https://images.unsplash.com/photo-1747515204496-c30cc740fdce?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "2d ago",
+    "likes": 283,
+    "comments": 90
+  },
+  {
+    "author": {
+      "name": "Ava Martins",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "How Coffee Affects Your Brain",
+    "excerpt": "Coffee boosts focus, but too much can cause anxiety. Here\u2019s the science.",
+    "coverImage": "https://images.unsplash.com/photo-1745179276969-d9db2e682b5d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "20h ago",
+    "likes": 976,
+    "comments": 117
+  },
+  {
+    "author": {
+      "name": "Diego Romero",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "Minimalism: A Lifestyle or Trend?",
+    "excerpt": "Owning less can mean living more. Minimalism is more than just an aesthetic.",
+    "coverImage": "https://images.unsplash.com/photo-1745972036912-3e7ccc236922?q=80&w=1922&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "4d ago",
+    "likes": 288,
+    "comments": 59
+  },
+  {
+    "author": {
+      "name": "Olivia Brooks",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "Behind the Scenes of a Fashion Show",
+    "excerpt": "The chaos backstage is unreal. Models rush, designers tweak, and everyone\u2019s on edge.",
+    "coverImage": "https://images.unsplash.com/photo-1741802872469-b404a312fa91?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "15h ago",
+    "likes": 621,
+    "comments": 121
+  },
+  {
+    "author": {
+      "name": "Leo Tanaka",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "Secrets of the Ocean Depths",
+    "excerpt": "The deep sea is home to bizarre creatures. Some have never been seen alive.",
+    "coverImage": "https://images.unsplash.com/photo-1741806914386-c60073a0fed3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "1d ago",
+    "likes": 710,
+    "comments": 91
+  },
+  {
+    "author": {
+      "name": "Nina Kowalski",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "Can Plants Feel Pain?",
+    "excerpt": "While they lack nerves, plants do react to harm. Scientists are fascinated.",
+    "coverImage": "https://images.unsplash.com/photo-1747285726386-2f321b64d84c?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "5d ago",
+    "likes": 215,
+    "comments": 58
+  },
+  {
+    "author": {
+      "name": "Jonas Bauer",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "History\u2019s Greatest Heists",
+    "excerpt": "The Antwerp diamond heist remains unsolved. It\u2019s a tale of cunning and precision.",
+    "coverImage": "https://images.unsplash.com/photo-1744768326067-8b9835957c86?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "16h ago",
+    "likes": 654,
+    "comments": 92
+  },
+  {
+    "author": {
+      "name": "Emilia Rossi",
+      "image": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    "title": "Gaming in 2025: What to Expect",
+    "excerpt": "Immersive VR and AI-driven NPCs are just the start. Gaming will never be the same.",
+    "coverImage": "https://images.unsplash.com/photo-1747242746712-d3a18ff46a7d?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "release": "16h ago",
+    "likes": 427,
+    "comments": 68
+  }
+]
