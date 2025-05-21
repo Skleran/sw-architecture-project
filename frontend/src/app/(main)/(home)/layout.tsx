@@ -1,3 +1,4 @@
+import Sidebar from "@/components/sidebar";
 import TagSelector from "@/components/tag-selector";
 
 export default function HomeLayout({
@@ -23,7 +24,9 @@ export default function HomeLayout({
           </div>
           <div className="mx-6 mt-[61px]">{children}</div>
         </div>
-        <div className="flex-col gap-4 border-2 border-blue-600/30 hidden lg:flex"></div>
+        <div className="flex-col gap-4 hidden lg:flex mt-6">
+          <Sidebar />
+        </div>
       </div>
     </>
   );

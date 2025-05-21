@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "./button";
 import { MessageCircle, ThumbsUp } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
 type Article = {
   author: { name: string; image: string };
@@ -13,20 +14,29 @@ type Article = {
 };
 
 export default function HomeArticleCard({ data }: { data: Article }) {
+  const getInitials = (name: string) => {
+    return name
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase();
+  };
+
+  const authorInitials = getInitials(data.author.name);
+
   return (
     <div className="w-full flex flex-col items-center justify-center">
-      <Link
-        href={`/${data.author.name}/${data.title}`}
-        className="w-full max-w-[680px] flex flex-col gap-3 mt-8 mx-6"
-      >
-        <div className="flex items-center gap-2">
+      <div className="w-full max-w-[680px] flex flex-col gap-3 mt-8 mx-6">
+        <div className="flex gap-2">
           <Link href={`/${data.author.name}`}>
-            {" "}
-            <img
-              src={data.author.image}
-              alt={data.author.name}
-              className="size-6 rounded-full hover:brightness-90"
-            />
+            <Avatar className="size-6">
+              <AvatarImage
+                src={data.author.image}
+                alt={data.author.name}
+                className="size-6 hover:brightness-90"
+              />
+              <AvatarFallback>{authorInitials}</AvatarFallback>
+            </Avatar>
           </Link>
 
           <Link href={`/${data.author.name}`}>
@@ -41,7 +51,10 @@ export default function HomeArticleCard({ data }: { data: Article }) {
           </Link>
         </div>
 
-        <div className="w-full grid grid-cols-[5fr_2fr] grid-rows-[auto_auto]">
+        <Link
+          href={`/${data.author.name}/${data.title}`}
+          className="w-full grid grid-cols-[5fr_2fr] grid-rows-[auto_auto]"
+        >
           <div className="w-full flex flex-col justify-between gap-5">
             <div className="flex flex-col gap-2.5">
               <h2 className="font-bold text-xl md:text-2xl leading-[1.15] md:leading-[1.25] md:tracking-[-0.01em] line-clamp-4 overflow-visible">
@@ -88,8 +101,8 @@ export default function HomeArticleCard({ data }: { data: Article }) {
             </div>
             <div className=""></div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
       <div className="w-full max-w-[680px] border-b mt-8" />
     </div>
   );
