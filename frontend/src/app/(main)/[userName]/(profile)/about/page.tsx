@@ -1,7 +1,22 @@
 export default function About() {
   return (
     <>
-      <div>qwe</div>
+      <div className="mt-8">
+        <p className="text-lg">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
+          quidem nulla molestias! Reiciendis, itaque libero?
+          <br />
+          <br />
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis,
+          similique.
+          <br />
+          <br />
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro,
+          consequatur labore. Fugit adipisci, optio voluptas maiores fugiat
+          error natus placeat nam perspiciatis, dolores maxime, illo beatae
+          perferendis harum aliquid quo.
+        </p>
+      </div>
     </>
   );
 }

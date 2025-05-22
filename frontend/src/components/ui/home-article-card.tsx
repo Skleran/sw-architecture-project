@@ -57,10 +57,10 @@ export default function HomeArticleCard({ data }: { data: Article }) {
         >
           <div className="w-full flex flex-col justify-between gap-5">
             <div className="flex flex-col gap-2.5">
-              <h2 className="font-bold text-xl md:text-2xl leading-[1.15] md:leading-[1.25] md:tracking-[-0.01em] line-clamp-4 overflow-visible">
+              <h2 className="font-extrabold text-xl md:text-2xl leading-[1.15] md:leading-[1.25] line-clamp-4 overflow-visible">
                 {data.title}
               </h2>
-              <div className="line-clamp-2 text-muted-foreground leading-5">
+              <div className="line-clamp-2 text-muted-foreground leading-5.5">
                 {data.excerpt}
               </div>
             </div>

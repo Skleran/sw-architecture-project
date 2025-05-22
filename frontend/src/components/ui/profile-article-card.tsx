@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { Button } from "./button";
 import { MessageCircle, ThumbsUp } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
 type Article = {
   author: { name: string; image: string };
@@ -14,16 +12,6 @@ type Article = {
 };
 
 export default function ProfileArticleCard({ data }: { data: Article }) {
-  const getInitials = (name: string) => {
-    return name
-      .split(" ")
-      .map((word) => word[0])
-      .join("")
-      .toUpperCase();
-  };
-
-  const authorInitials = getInitials(data.author.name);
-
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-full max-w-[680px] flex flex-col gap-3 mt-8 mx-6">
@@ -33,10 +21,10 @@ export default function ProfileArticleCard({ data }: { data: Article }) {
         >
           <div className="w-full flex flex-col justify-between gap-5">
             <div className="flex flex-col gap-2.5">
-              <h2 className="font-bold text-xl md:text-2xl leading-[1.15] md:leading-[1.25] md:tracking-[-0.01em] line-clamp-4 overflow-visible">
+              <h2 className="font-extrabold text-xl md:text-2xl leading-[1.15] md:leading-[1.25] line-clamp-4 overflow-visible">
                 {data.title}
               </h2>
-              <div className="line-clamp-2 text-muted-foreground leading-5">
+              <div className="line-clamp-2 text-muted-foreground leading-5.5">
                 {data.excerpt}
               </div>
             </div>

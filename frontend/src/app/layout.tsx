@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
+// import Satoshi from "next/font/local";
 import "./globals.css";
-import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +13,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+// const satoshi = Satoshi({
+//   src: "../../public/fonts/Satoshi-Variable.ttf",
+// });
+
+const inter = Inter({});
 
 export const metadata: Metadata = {
   title: {
@@ -32,7 +37,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        // style={{ minHeight: "100dvh" }}
       >
         <ThemeProvider
           attribute="class"
@@ -40,9 +44,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <Navbar /> */}
-          {/* <Header /> */}
-          <main className="">{children}</main>
+          <main className={`${inter.className}`}>{children}</main>
         </ThemeProvider>
       </body>
     </html>
