@@ -223,7 +223,10 @@ export function SimpleEditor() {
       TrailingNode,
       Link.configure({ openOnClick: false }),
     ],
-    content: content,
+    // content: content,
+    onUpdate: ({ editor }) => {
+      console.log(editor.getHTML());
+    },
   });
 
   const bodyRect = useCursorVisibility({

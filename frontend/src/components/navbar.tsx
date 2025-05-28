@@ -54,14 +54,14 @@ const Navbar = () => {
     const getMockCategories = async () => {
       try {
         // Simulating API delay
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        // await new Promise((resolve) => setTimeout(resolve, 500));
 
         // Mock categories data
         const mockCategories = [
           { id: "1", name: "Login" },
           { id: "2", name: "Signup" },
           { id: "3", name: "Plans" },
-          { id: "4", name: "Health" },
+          { id: "4", name: "New-Story" },
           { id: "5", name: "Business" },
         ];
 
