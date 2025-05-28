@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@theme {
+  --breakpoint-xs: 30rem;
+}
+
 @import "../styles/_variables.scss";
 @import "../styles/_keyframe-animations.scss";
 

@@ -37,7 +37,7 @@
     width: 100%;
     min-height: var(--tt-toolbar-height);
     background: var(--tt-toolbar-bg-color);
-    border-bottom: 1px solid var(--tt-toolbar-border-color);
+    border-top: 1px solid var(--tt-toolbar-border-color);
     padding: 0 0.5rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
@@ -50,7 +50,7 @@
     }
 
     @media (max-width: 480px) {
-      position: fixed;
+      position: sticky;
       top: auto;
       bottom: 0;
       height: calc(var(--tt-toolbar-height) + var(--tt-safe-area-bottom));

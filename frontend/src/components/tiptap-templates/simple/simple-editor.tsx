@@ -224,6 +224,7 @@ export function SimpleEditor() {
       Link.configure({ openOnClick: false }),
     ],
     // content: content,
+    content: "Tell your story...",
     onUpdate: ({ editor }) => {
       console.log(editor.getHTML());
     },
