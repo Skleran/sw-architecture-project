@@ -1,4 +1,8 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Bookmark, MessageCircle, Save, Share, ThumbsUp } from "lucide-react";
 import { Metadata } from "next";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{ userName: string; articleId: string }>;
@@ -19,8 +23,83 @@ export default async function Article({ params }: Props) {
 
   return (
     <>
-      <h1>This is the article id: {articleId}</h1>
-      <h1>This is the authors name: {userName}</h1>
+      <div className="flex flex-col w-full mx-6 max-w-[680px] mt-6 mb-16">
+        <div className="flex flex-col gap-1.75">
+          <h1 className="text-3xl font-extrabold">
+            This is the title of the article
+          </h1>
+          <h2 className="text-lg text-muted-foreground">
+            This is the subtitle of the article
+          </h2>
+        </div>
+        <div className="flex gap-3 items-center mt-7">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>EK</AvatarFallback>
+          </Avatar>
+          <Link href={"/username"}>
+            <p className="text-sm">Erdem Koyuncu</p>
+          </Link>
+          <Button variant={"outline"} className="rounded-full">
+            Follow
+          </Button>
+        </div>
+        <div className="flex gap-2 mt-5 text-muted-foreground">
+          <Button
+            variant={"ghost"}
+            className="rounded-full border-1 border-accent"
+          >
+            <Share />
+            <p>Share</p>
+          </Button>
+          <Button
+            variant={"ghost"}
+            className="rounded-full border-1 border-accent"
+          >
+            <Bookmark />
+            <p>Save</p>
+          </Button>
+        </div>
+        <div className="mt-8 min-h-screen border-b-1">ARTICLE CONTENT</div>
+        <div className="flex flex-wrap gap-2 mt-10">
+          <Button variant={"ghost"} className="rounded-full bg-accent">
+            <p>Object Recognition</p>
+          </Button>
+          <Button variant={"ghost"} className="rounded-full bg-accent">
+            <p>Software Engineering</p>
+          </Button>
+          <Button variant={"ghost"} className="rounded-full bg-accent">
+            <p>Neuroscience</p>
+          </Button>
+          <Button variant={"ghost"} className="rounded-full bg-accent">
+            <p>Linguistics</p>
+          </Button>
+        </div>
+        <div className="flex justify-between text-muted-foreground text-[13px] mt-6">
+          <div className="flex items-center gap-3">
+            <div className="flex gap-2 items-center">
+              <Button variant={"ghost"} className="rounded-full">
+                <ThumbsUp size={18} />
+                <p className="mt-0.5">3.1K</p>
+              </Button>
+            </div>
+            <div className="flex gap-2 items-center">
+              <Button variant={"ghost"} className="rounded-full">
+                <MessageCircle size={18} />
+                <p className="mt-0.5">221</p>
+              </Button>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <Button variant={"ghost"} size={"icon"}>
+              <Bookmark />
+            </Button>
+            <Button variant={"ghost"} size={"icon"}>
+              <Share />
+            </Button>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

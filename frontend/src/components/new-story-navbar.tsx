@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   Dialog,
   DialogContent,
@@ -23,7 +22,7 @@ export default function NewStoryNavbar() {
           </Link>
           <div className="text-xs pt-1.5">Draft in User Name</div>
         </div>
-        <div className="flex items-center gap-6 sm:gap-8">
+        <div className="flex items-center gap-4 sm:gap-6">
           <Dialog>
             <DialogTrigger asChild>
               <Button variant={"outline"} className="rounded-full">
@@ -31,7 +30,6 @@ export default function NewStoryNavbar() {
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
-              {" "}
               <DialogTitle>Story Preview</DialogTitle>
               <DialogDescription></DialogDescription>
               <div className="flex flex-col gap-6">

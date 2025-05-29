@@ -202,9 +202,9 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({ children }) => {
 
   return (
     <div className="h-full w-full flex items-center justify-center">
-      <div className="w-[1200px] mt-16 grid grid-cols-[1fr_680px_1fr] grid-rows-auto auto-cols-fr gap-4 items-start relative">
+      <div className="grid-cols-1 lg:w-[1200px] mt-16 grid lg:grid-cols-[1fr_680px_1fr] grid-rows-auto auto-cols-fr gap-4 items-start relative">
         <div
-          className="justify-start items-start w-[200px] max-w-[200px] max-h-[100vh] pt-3 flex sticky top-12"
+          className="justify-start items-start w-[200px] max-w-[200px] max-h-[100vh] pt-3 sticky top-12 hidden lg:flex"
           style={{ minHeight: initialHeight ?? "auto" }}
         >
           <motion.div
@@ -299,7 +299,9 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({ children }) => {
         </div>
 
         {/* middle column for content */}
-        <div className="flex flex-col gap-10">{children}</div>
+        <div className="flex flex-col gap-10 max-w-[680px] mx-6 lg:mx-0">
+          {children}
+        </div>
 
         {/* right column (empty) */}
         <div></div>
