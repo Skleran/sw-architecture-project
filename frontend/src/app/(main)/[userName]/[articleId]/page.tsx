@@ -23,16 +23,17 @@ export default async function Article({ params }: Props) {
 
   return (
     <>
-      <div className="flex flex-col w-full mx-6 max-w-[680px] mt-6 mb-16">
+      <div className="flex flex-col w-full mx-6 max-w-[680px] mt-6 mb-16 border-b pb-16">
         <div className="flex flex-col gap-1.75">
           <h1 className="text-3xl font-extrabold">
             This is the title of the article
           </h1>
-          <h2 className="text-lg text-muted-foreground">
-            This is the subtitle of the article
+          <h2 className="text-lg text-muted-foreground leading-6">
+            This is the subtitle of the article. This is the subtitle of the
+            article.
           </h2>
         </div>
-        <div className="flex gap-3 items-center mt-7">
+        <div className="flex gap-3 items-center mt-6">
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>EK</AvatarFallback>
@@ -97,6 +98,47 @@ export default async function Article({ params }: Props) {
             <Button variant={"ghost"} size={"icon"}>
               <Share />
             </Button>
+          </div>
+        </div>
+        <div className="flex flex-col mt-8">
+          <div className="flex justify-between items-center">
+            <Avatar className="size-16">
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>EK</AvatarFallback>
+            </Avatar>
+            <Button variant={"outline"} className="rounded-full p-5">
+              Follow
+            </Button>
+          </div>
+          <div className="flex flex-col">
+            {" "}
+            <h2 className="text-xl mt-4">
+              Written by
+              <Link href={"/"}>
+                {" "}
+                <Button variant={"link"} className="px-0 text-xl">
+                  Erdem Koyuncu
+                </Button>
+              </Link>
+            </h2>
+            <div className="flex gap-1.5 text-muted-foreground text-sm">
+              <p>390 followers</p>
+              <span>·</span>
+              <p>123 following</p>
+            </div>
+          </div>
+          <div className="flex flex-col mt-8">
+            <h2 className="text-xl">Responses (22)</h2>
+            <div className="flex flex-col">
+              <div className="flex gap-3 items-center mt-4">
+                <Avatar className="size-8">
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>EK</AvatarFallback>
+                </Avatar>
+                <span className="text-sm">Erdem Koyuncu</span>
+              </div>
+              <div></div>
+            </div>
           </div>
         </div>
       </div>
