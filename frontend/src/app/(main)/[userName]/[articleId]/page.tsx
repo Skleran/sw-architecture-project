@@ -1,5 +1,7 @@
+import ArticleCommentInput from "@/components/article-comment-input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { Bookmark, MessageCircle, Save, Share, ThumbsUp } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -45,9 +47,10 @@ export default async function Article({ params }: Props) {
             Follow
           </Button>
         </div>
-        <div className="flex gap-2 mt-5 text-muted-foreground">
+        <div className="flex gap-3 mt-5 text-muted-foreground">
           <Button
             variant={"ghost"}
+            size={"lg"}
             className="rounded-full border-1 border-accent"
           >
             <Share />
@@ -55,6 +58,7 @@ export default async function Article({ params }: Props) {
           </Button>
           <Button
             variant={"ghost"}
+            size={"lg"}
             className="rounded-full border-1 border-accent"
           >
             <Bookmark />
@@ -100,13 +104,13 @@ export default async function Article({ params }: Props) {
             </Button>
           </div>
         </div>
-        <div className="flex flex-col mt-8">
+        <div className="flex flex-col mt-12">
           <div className="flex justify-between items-center">
             <Avatar className="size-16">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>EK</AvatarFallback>
             </Avatar>
-            <Button variant={"outline"} className="rounded-full p-5">
+            <Button variant={"outline"} size={"lg"} className="rounded-full">
               Follow
             </Button>
           </div>
@@ -116,8 +120,8 @@ export default async function Article({ params }: Props) {
               Written by
               <Link href={"/"}>
                 {" "}
-                <Button variant={"link"} className="px-0 text-xl">
-                  Erdem Koyuncu
+                <Button asChild variant={"link"} className="px-0">
+                  <p className="text-xl">Erdem Koyuncu</p>
                 </Button>
               </Link>
             </h2>
@@ -127,17 +131,18 @@ export default async function Article({ params }: Props) {
               <p>123 following</p>
             </div>
           </div>
-          <div className="flex flex-col mt-8">
-            <h2 className="text-xl">Responses (22)</h2>
+          <div className="border-b-1 mt-12" />
+          <div className="flex flex-col mt-12">
+            <h2 className="text-2xl font-semibold">Responses (22)</h2>
             <div className="flex flex-col">
-              <div className="flex gap-3 items-center mt-4">
+              <div className="flex gap-3 items-center mt-8 mb-5">
                 <Avatar className="size-8">
                   <AvatarImage src="https://github.com/shadcn.png" />
                   <AvatarFallback>EK</AvatarFallback>
                 </Avatar>
                 <span className="text-sm">Erdem Koyuncu</span>
               </div>
-              <div></div>
+              <ArticleCommentInput />
             </div>
           </div>
         </div>

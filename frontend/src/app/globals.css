@@ -5,8 +5,8 @@
   --breakpoint-xs: 30rem;
 }
 
-@import "../styles/_variables.scss";
-@import "../styles/_keyframe-animations.scss";
+/* @import "../styles/_variables.scss";
+@import "../styles/_keyframe-animations.scss"; */
 
 *,
 *::before,
