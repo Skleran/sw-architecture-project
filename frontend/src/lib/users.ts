@@ -27,4 +27,7 @@ export const userApi = {
     apiRequest<void>(`/users/delete/${id}`, {
       method: "DELETE",
     }),
+
+  getByName: (userName: string): Promise<User> =>
+    apiRequest<User>(`/users/getByName/${userName}`),
 };
