@@ -1,10 +1,47 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
+import { userApi } from "@/lib/users";
+import { commentApi } from "@/lib/comments";
+import { jwtDecode } from "jwt-decode";
 
-export default function ArticleCommentInput() {
+type Props = {
+  articleId: number;
+};
+
+type JwtPayload = {
+  sub: string;
+};
+
+export default function ArticleCommentInput({ articleId }: Props) {
+  const [content, setContent] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState(0);
+
+  useEffect(() => {
+    const token = localStorage.getItem("auth_token");
+    if (!token) return;
+    console.log(token);
+
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
+      const name = decoded.sub;
+      if (name) {
+        console.log(name);
+
+        setUserName(name);
+
+        userApi.getByName(name).then((user) => {
+          setUserId(user.userId);
+        });
+      }
+    } catch (err) {
+      console.log("Invalid token", err);
+    }
+  }, []);
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasText, setHasText] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -15,6 +52,7 @@ export default function ArticleCommentInput() {
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value.trim();
+    setContent(value);
     setHasText(value.length > 0);
   };
 
@@ -27,15 +65,27 @@ export default function ArticleCommentInput() {
     }
   };
 
-  const handleRespond = () => {
-    // Add your response logic here
-    console.log("Response submitted");
-    if (textareaRef.current) {
-      textareaRef.current.value = "";
-      textareaRef.current.style.height = "auto";
+  const handleRespond = async () => {
+    if (!hasText || !userId || !articleId) return;
+
+    try {
+      const newComment = await commentApi.create({
+        userId,
+        articleId,
+        content,
+      });
+      console.log("Comment created:", newComment);
+
+      setContent("");
+      if (textareaRef.current) {
+        textareaRef.current.value = "";
+        textareaRef.current.style.height = "auto";
+      }
+      setHasText(false);
+      setIsExpanded(false);
+    } catch (err: any) {
+      console.log("Failed to create comment:", err);
     }
-    setHasText(false);
-    setIsExpanded(false); // Optional: collapse after responding
   };
 
   return (

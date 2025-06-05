@@ -1,6 +1,7 @@
 "use client";
 
 import ArticleCommentInput from "@/components/article-comment-input";
+import ArticleCommentsSection from "@/components/article-comments-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { articleApi } from "@/lib/articles";
@@ -152,8 +153,14 @@ export default function ArticleContent({ userName, articleId }: Props) {
               </Avatar>
               <span className="text-sm">{userData.username}</span>
             </div>
-            <ArticleCommentInput />
+            <ArticleCommentInput articleId={articleId} />
           </div>
+        </div>
+
+        <div className="border-b-1 mt-12" />
+
+        <div className="flex flex-col mt-5">
+          <ArticleCommentsSection id={articleId} />
         </div>
       </div>
     </div>

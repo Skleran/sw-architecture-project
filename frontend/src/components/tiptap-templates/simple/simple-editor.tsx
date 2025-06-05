@@ -182,7 +182,11 @@ const MobileToolbarContent = ({
   </>
 );
 
-export function SimpleEditor() {
+export function SimpleEditor({
+  onContentChange,
+}: {
+  onContentChange?: (html: string) => void;
+}) {
   const isMobile = useMobile();
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = React.useState<
@@ -227,6 +231,8 @@ export function SimpleEditor() {
     content: "Tell your story...",
     onUpdate: ({ editor }) => {
       console.log(editor.getHTML());
+      const html = editor.getHTML();
+      onContentChange?.(html);
     },
   });
 
