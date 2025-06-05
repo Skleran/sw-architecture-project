@@ -43,7 +43,10 @@ export default async function User({
             <div className="mt-[210px] lg:mt-[176px] mx-6 lg:mx-0">
               {articles.length > 0 ? (
                 articles.map((article) => (
-                  <ProfileArticleCard key={article.id} data={article} />
+                  <ProfileArticleCard
+                    key={article.id}
+                    data={{ ...article, name: userName }}
+                  />
                 ))
               ) : (
                 <div className="text-center py-8 text-gray-500">

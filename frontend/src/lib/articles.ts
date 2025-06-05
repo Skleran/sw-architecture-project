@@ -10,4 +10,7 @@ export interface Article {
 export const articleApi = {
   getByAuthor: (authorId: number): Promise<Article[]> =>
     apiRequest<Article[]>(`/users/${authorId}/articles`),
+
+  getById: (id: number): Promise<Article> =>
+    apiRequest<Article>(`/articles/article/${id}`),
 };

@@ -3,6 +3,8 @@ import { MessageCircle, ThumbsUp } from "lucide-react";
 
 type Article = {
   // author: { name: string; image: string };
+  name: string;
+  id: number;
   title: string;
   content: string;
   // excerpt: string;
@@ -17,8 +19,7 @@ export default function ProfileArticleCard({ data }: { data: Article }) {
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-full max-w-[680px] flex flex-col gap-3 mt-8 mx-6">
         <Link
-          // href={`/${data.author.name}/${data.title}`}
-          href={`/`}
+          href={`/${data.name}/${data.id}`}
           className="w-full grid grid-cols-[5fr_2fr] grid-rows-[auto_auto]"
         >
           <div className="w-full flex flex-col justify-between gap-5">
@@ -50,7 +51,7 @@ export default function ProfileArticleCard({ data }: { data: Article }) {
             <div className="">
               <img
                 // src={data.coverImage}
-                src={""}
+                src={"https://randomuser.me/api/portraits/lego/2.jpg"}
                 alt="cover"
                 className="object-contain md:object-cover rounded-sm max-h-[100px] md:max-h-[120px] md:min-w-[120px]"
               />
