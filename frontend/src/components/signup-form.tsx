@@ -7,18 +7,20 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { motion } from "motion/react";
-import { toast } from "sonner";
 import FloatingLabelInput from "./ui/floating-input";
-// import TransitionLink from "./ui/transition-link";
 import Link from "next/link";
+import { authService } from "@/lib/auth";
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    username: "",
+    email: "",
+    password: "",
+    role: "READER",
+  });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -28,94 +30,31 @@ export function SignupForm({
     setInitialRender(false);
   }, []);
 
-  // Mock signup function to replace the actual signup logic
-  const mockSignup = () => {
-    // This is a placeholder for your actual signup logic
-    console.log("Mock signup function called");
-    toast.success("Signup successful", {
-      description: "You can now login",
-    });
-
-    // Navigate to login page with transitions if supported
-    if (!document.startViewTransition) {
-      router.push("/login");
-      return;
-    }
-
-    document.startViewTransition(() => {
-      router.push("/login");
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCredentials((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setError("");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
+    setError("");
 
     try {
-      // Simulating API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Basic form validation
-      if (!name || name.length < 2) {
-        setError("Please enter a valid name");
-        return;
-      }
-
-      if (!email || !email.includes("@")) {
-        setError("Please enter a valid email address");
-        return;
-      }
-
-      if (!password || password.length < 6) {
-        setError("Password must be at least 6 characters");
-        return;
-      }
-
-      // Mock successful signup
-      mockSignup();
-
-      /* Commented out actual signup implementation
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, password }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        if (
-          data.code === "P2002" ||
-          (data.message && data.message.includes("Unique constraint failed"))
-        ) {
-          setError(
-            "Email address is already in use. Please use a different email."
-          );
-        } else {
-          setError(data.message || "Signup failed");
-        }
-        return;
-      }
-
-      toast.success("Signup successful", {
-        description: "You can now login",
-      });
-
+      await authService.register(credentials);
       if (!document.startViewTransition) {
-        navigate("/login");
+        router.push("/");
         return;
       }
 
       document.startViewTransition(() => {
-        navigate("/login");
+        router.push("/");
       });
-      */
-    } catch (err) {
-      console.log(err);
-      setError("An error occurred");
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -144,18 +83,24 @@ export function SignupForm({
               </div>
               <div className="">
                 <FloatingLabelInput
-                  id="name"
-                  label="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  id="username"
+                  type="text"
+                  label="Username"
+                  name="username"
+                  value={credentials.username}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <div className="">
                 <FloatingLabelInput
                   id="email"
+                  type="email"
+                  name="email"
                   label="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={credentials.email}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <div className="pb-4">
@@ -163,9 +108,10 @@ export function SignupForm({
                   id="password"
                   label="Password"
                   type="password"
+                  name="password"
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={credentials.password}
+                  onChange={handleChange}
                 />
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}

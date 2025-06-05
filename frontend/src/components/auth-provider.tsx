@@ -13,7 +13,6 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Public routes that don't require authentication
 const publicRoutes = ["/login", "/signup", "/"];
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -29,7 +28,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setIsAuthenticated(authenticated);
       setIsLoading(false);
 
-      // Redirect to login if not authenticated and on protected route
       if (!authenticated && !publicRoutes.includes(pathname)) {
         router.push("/login");
       }
@@ -54,7 +52,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     router.push("/login");
   };
 
-  // Show loading spinner while checking authentication
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -63,7 +60,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // If not authenticated and on protected route, show nothing (will redirect)
   if (!isAuthenticated && !publicRoutes.includes(pathname)) {
     return null;
   }

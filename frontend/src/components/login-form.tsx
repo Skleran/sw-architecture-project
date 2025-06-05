@@ -6,9 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { motion } from "motion/react";
-import { toast } from "sonner";
 import FloatingLabelInput from "./ui/floating-input";
-// import TransitionLink from "./ui/transition-link";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "./auth-provider";
@@ -48,80 +46,6 @@ export function LoginForm({
       });
     } catch (err) {
       setError("Invalid credentials");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Mock login function to replace the actual authentication
-  const mockLogin = () => {
-    // This is a placeholder for your actual login logic
-    console.log("Mock login function called");
-    toast.success("Login successful");
-
-    // Navigate to home page with transitions if supported
-    if (!document.startViewTransition) {
-      router.push("/");
-      return;
-    }
-
-    document.startViewTransition(() => {
-      router.push("/");
-    });
-  };
-
-  const handleSubmitAlt = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setError("");
-    setLoading(true);
-
-    try {
-      // Simulating API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // For demo purposes - accept any email with a password longer than 5 chars
-      // if (password.length < 6) {
-      //   setError("Password must be at least 6 characters");
-      //   return;
-      // }
-
-      // Mock successful login
-      mockLogin();
-
-      /* Commented out actual login implementation
-      const response = await fetch("/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        setError(data.message || "Login failed");
-        return;
-      }
-
-      const data = await response.json();
-
-      toast.success("Login successful");
-
-      login(data.accessToken);
-
-      if (!document.startViewTransition) {
-        navigate("/");
-        return;
-      }
-
-      document.startViewTransition(() => {
-        navigate("/");
-      });
-      */
-    } catch (err) {
-      console.log(err);
-      setError("An error occurred");
     } finally {
       setLoading(false);
     }

@@ -1,3 +1,5 @@
+import { CreateUser } from "./users";
+
 export interface LoginCredentials {
   username: string;
   password: string;
@@ -48,7 +50,6 @@ export const authService = {
 
   logout: (): void => {
     authService.removeToken();
-    // Redirect to login page
     if (typeof window !== "undefined") {
       window.location.href = "/login";
     }
@@ -72,8 +73,7 @@ export const authService = {
     return authData;
   },
 
-  // Register function
-  register: async (userData: any): Promise<AuthResponse> => {
+  register: async (userData: CreateUser): Promise<AuthResponse> => {
     const response = await fetch("http://localhost:8082/api/auth/register", {
       method: "POST",
       headers: {
