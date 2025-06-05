@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
-// import { useAuth } from "./auth-context";
 import { Loader2 } from "lucide-react";
 import { motion } from "motion/react";
 import { toast } from "sonner";
@@ -12,22 +11,47 @@ import FloatingLabelInput from "./ui/floating-input";
 // import TransitionLink from "./ui/transition-link";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "./auth-provider";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  // const { login } = useAuth();
+  const { login } = useAuth();
   const [initialRender, setInitialRender] = useState(true);
 
   useEffect(() => {
     setInitialRender(false);
   }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    try {
+      await login(credentials);
+      if (!document.startViewTransition) {
+        router.push("/");
+        return;
+      }
+
+      document.startViewTransition(() => {
+        router.push("/");
+      });
+    } catch (err) {
+      setError("Invalid credentials");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Mock login function to replace the actual authentication
   const mockLogin = () => {
@@ -46,7 +70,7 @@ export function LoginForm({
     });
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmitAlt = async (event: React.FormEvent) => {
     event.preventDefault();
     setError("");
     setLoading(true);
@@ -56,10 +80,10 @@ export function LoginForm({
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // For demo purposes - accept any email with a password longer than 5 chars
-      if (password.length < 6) {
-        setError("Password must be at least 6 characters");
-        return;
-      }
+      // if (password.length < 6) {
+      //   setError("Password must be at least 6 characters");
+      //   return;
+      // }
 
       // Mock successful login
       mockLogin();
@@ -126,11 +150,14 @@ export function LoginForm({
               </div>
               <div className="">
                 <FloatingLabelInput
-                  id="email"
-                  type="email"
-                  label="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  id="text"
+                  type="text"
+                  label="Username"
+                  value={credentials.username}
+                  onChange={(e) =>
+                    setCredentials({ ...credentials, username: e.target.value })
+                  }
+                  required
                 />
               </div>
               <div className="pb-4">
@@ -138,8 +165,10 @@ export function LoginForm({
                   label="Password"
                   type="password"
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={credentials.password}
+                  onChange={(e) =>
+                    setCredentials({ ...credentials, password: e.target.value })
+                  }
                 />
               </div>
               {error && <p className="text-red-500">{error}</p>}

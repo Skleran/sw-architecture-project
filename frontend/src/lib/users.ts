@@ -1,4 +1,4 @@
-import { apiRequest } from ".";
+import { protectedApiRequest } from ".";
 
 export interface User {
   userId: number;
@@ -15,19 +15,19 @@ export interface CreateUser {
 }
 
 export const userApi = {
-  getAll: (): Promise<User[]> => apiRequest<User[]>("/users/getAll"),
+  getAll: (): Promise<User[]> => protectedApiRequest<User[]>("/users/getAll"),
 
   create: (userData: CreateUser): Promise<User> =>
-    apiRequest<User>("/users/create", {
+    protectedApiRequest<User>("/users/create", {
       method: "POST",
       body: JSON.stringify(userData),
     }),
 
   delete: (id: number): Promise<void> =>
-    apiRequest<void>(`/users/delete/${id}`, {
+    protectedApiRequest<void>(`/users/delete/${id}`, {
       method: "DELETE",
     }),
 
   getByName: (userName: string): Promise<User> =>
-    apiRequest<User>(`/users/getByName/${userName}`),
+    protectedApiRequest<User>(`/users/getByName/${userName}`),
 };
