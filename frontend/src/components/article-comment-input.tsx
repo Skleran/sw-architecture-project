@@ -59,7 +59,7 @@ export default function ArticleCommentInput() {
           ${isExpanded ? "max-h-16 opacity-100 pb-2" : "max-h-0 opacity-0 pb-0"}
         `}
       >
-        <Button variant="link" className="rounded-full" onClick={handleCancel}>
+        <Button variant="ghost" className="rounded-full" onClick={handleCancel}>
           Cancel
         </Button>
         <Button
