@@ -224,3 +224,10 @@ input[type="number"] {
     clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
   }
 }
+@plugin "@tailwindcss/typography";
+
+.prose pre {
+  white-space: pre-wrap; /* wraps instead of scroll */
+  overflow-x: auto; /* keep this if you still want scrolling fallback */
+  word-break: break-word;
+}

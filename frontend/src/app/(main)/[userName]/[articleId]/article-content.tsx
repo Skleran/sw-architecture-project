@@ -9,6 +9,8 @@ import { userApi } from "@/lib/users";
 import { Bookmark, MessageCircle, Share, ThumbsUp } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import DOMPurify from "dompurify";
+import "@/styles/editor.css";
 
 type Props = {
   userName: string;
@@ -84,7 +86,13 @@ export default function ArticleContent({ userName, articleId }: Props) {
         </Button>
       </div>
 
-      <div className="mt-8 min-h-screen border-b-1">{articleData.content}</div>
+      <article className="prose prose-stone dark:prose-invert mt-8 min-h-screen border-b-1 max-w-none">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(articleData.content),
+          }}
+        />
+      </article>
 
       <div className="flex flex-wrap gap-2 mt-10">
         <Link href={`/tag/${articleData.category}`}>
