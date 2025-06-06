@@ -21,9 +21,12 @@ export const articleApi = {
   getById: (id: number): Promise<Article> =>
     protectedApiRequest<Article>(`/articles/article/${id}`),
 
-  create: (articleData: CreateArticle): Promise<Article> =>
-    protectedApiRequest<Article>("/articles/saveArticle", {
+  create: (articleData: CreateArticle): Promise<Article> => {
+    console.log("Sending article data:", articleData);
+
+    return protectedApiRequest<Article>("/articles/saveArticle", {
       method: "POST",
       body: JSON.stringify(articleData),
-    }),
+    });
+  },
 };

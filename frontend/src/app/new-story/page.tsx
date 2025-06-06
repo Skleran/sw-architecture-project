@@ -1,4 +1,5 @@
 "use client";
+import "@/styles/editor.css";
 
 import NewStoryNavbar from "@/components/new-story-navbar";
 import { SimpleEditor } from "@/components/tiptap-templates/simple/simple-editor";
@@ -20,7 +21,7 @@ export default function Page() {
     try {
       setLoading(true);
 
-      const authorId = 38;
+      const authorId = 39;
       const categoryId = 1;
 
       const article = await articleApi.create({
