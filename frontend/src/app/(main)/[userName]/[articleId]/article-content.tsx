@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
 import "@/styles/editor.css";
+import ArticleReaction from "./article-reaction";
 
 type Props = {
   userName: string;
@@ -94,25 +95,12 @@ export default function ArticleContent({ userName, articleId }: Props) {
         />
       </article>
 
-      <div className="flex flex-wrap gap-2 mt-10">
+      <div className="flex justify-between flex-wrap gap-2 mt-10">
         <Link href={`/tag/${articleData.category}`}>
           <Button variant="ghost" className="rounded-full bg-accent">
             <p>{articleData.category}</p>
           </Button>
         </Link>
-      </div>
-
-      <div className="flex justify-between text-muted-foreground text-[13px] mt-6">
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" className="rounded-full">
-            <ThumbsUp size={18} />
-            <p className="mt-0.5">3.1K</p>
-          </Button>
-          <Button variant="ghost" className="rounded-full">
-            <MessageCircle size={18} />
-            <p className="mt-0.5">221</p>
-          </Button>
-        </div>
         <div className="flex items-center">
           <Button variant="ghost" size="icon">
             <Bookmark />
@@ -149,7 +137,16 @@ export default function ArticleContent({ userName, articleId }: Props) {
           </div>
         </div>
 
-        <div className="border-b-1 mt-12" />
+        <div className="border-b-1 mt-8 mb-4" />
+
+        <div className="flex flex-col gap-2 mt-4">
+          <p className="text-lg ml-2.75 font-semibold">React with emoji!</p>
+          <div className="flex items-center gap-3 text-muted-foreground">
+            <ArticleReaction articleId={articleId} />
+          </div>
+        </div>
+
+        <div className="border-b-1 mt-8 mb-2" />
 
         <div className="flex flex-col mt-12">
           <h2 className="text-2xl font-semibold">Responses (22)</h2>

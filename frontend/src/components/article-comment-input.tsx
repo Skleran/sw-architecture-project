@@ -23,7 +23,7 @@ export default function ArticleCommentInput({ articleId }: Props) {
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
     if (!token) return;
-    console.log(token);
+    // console.log(token);
 
     try {
       const decoded = jwtDecode<JwtPayload>(token);
