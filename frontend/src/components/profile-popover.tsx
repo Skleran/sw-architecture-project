@@ -1,42 +1,76 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar } from "./ui/avatar";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import ChangeThemeTabs from "./ui/theme-selector";
+import { UserRound } from "lucide-react";
+import { jwtDecode } from "jwt-decode";
+import { useRouter } from "next/navigation";
+
+type JwtPayload = {
+  sub: string;
+};
 
 export default function ProfilePopover() {
+  const [userName, setUserName] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("auth_token");
+    if (!token) return;
+
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
+      const username = decoded.sub;
+      setUserName(username);
+      // if (username) {
+      //   userApi.getByName(username).then((user) => {
+      //     setUserId(user.userId);
+      //   });
+      // }
+    } catch (err) {
+      console.error("Invalid token", err);
+    }
+  }, []);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("auth_token"); // Remove token
+    router.push("/login"); // Redirect
+  };
+
   return (
     <>
       <Popover>
         <PopoverTrigger className="hover:cursor-pointer hover:brightness-90">
-          <Avatar className="size-9">
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>EK</AvatarFallback>
+          <Avatar className="size-9 flex items-center justify-center">
+            <UserRound />
           </Avatar>
         </PopoverTrigger>
-        <PopoverContent className="w-fit">
+        <PopoverContent className="w-60 max-w-60">
           <div className="flex flex-col">
-            <div className="flex items-center gap-5 border-b-1 pb-4 pr-4">
-              {" "}
-              <Avatar className="size-12">
-                <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>EK</AvatarFallback>
-              </Avatar>
-              <div className="flex flex-col items-start gap-1">
-                <Button variant={"link"} className="p-0 m-0 h-fit">
-                  Erdem Koyuncu
-                </Button>
-                <Button
+            <div className="flex items-center justify-between gap-5 border-b-1 pb-4 max-w-full">
+              <div className="flex flex-col items-start">
+                <Link href={`/${userName}`}>
+                  <Button variant={"link"} className="p-0 m-0 h-fit max-w-full">
+                    <p className="truncate max-w-[70px] text-lg">{userName}</p>
+                  </Button>
+                </Link>
+
+                {/* <Button
                   variant={"link"}
                   className="text-sm text-muted-foreground hover:cursor-pointer hover: p-0 m-0 h-fit"
                 >
                   skleran
-                </Button>
+                </Button> */}
               </div>
+              <ChangeThemeTabs animationKey="change-theme" />
             </div>
             <div className="flex flex-col gap-3 mt-3">
               <Link
@@ -47,7 +81,7 @@ export default function ProfilePopover() {
               </Link>
               <div className="border-b-1" />
               <Link
-                href={"/"}
+                href={`/${userName}`}
                 className="text-sm text-foreground/60 transition-colors hover:text-foreground/80"
               >
                 Profile
@@ -59,12 +93,12 @@ export default function ProfilePopover() {
                 Become a member
               </Link>
               <div className="border-b-1" />
-              <Link
-                href={"/login"}
-                className="text-sm text-foreground/60 transition-colors hover:text-destructive/80"
+              <button
+                onClick={handleSignOut}
+                className="text-left text-sm text-foreground/60 transition-colors hover:text-destructive/80 hover:cursor-pointer"
               >
                 Sign out
-              </Link>
+              </button>
             </div>
           </div>
         </PopoverContent>

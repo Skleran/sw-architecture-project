@@ -13,6 +13,7 @@ import Link from "next/link";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
 import ChangeThemeTabs from "./ui/theme-selector";
+import ProfilePopover from "./profile-popover";
 // import UserBox from "../custom/user-box";
 // import api from "@/utils/api";
 // import TransitionLink from "./ui/transition-link";
@@ -146,10 +147,6 @@ const Navbar = () => {
                     ))
                   : ""}
               </div>
-
-              <div className="">
-                <ChangeThemeTabs animationKey="change-theme" />
-              </div>
             </SheetContent>
           </Sheet>
         </div>
@@ -200,7 +197,8 @@ const Navbar = () => {
             : ""}
         </div>
         <div className="">
-          <ChangeThemeTabs animationKey="change-theme" />
+          {/* <ChangeThemeTabs animationKey="change-theme" /> */}
+          <ProfilePopover />
         </div>
         {/* <UserBox /> */}
       </div>
