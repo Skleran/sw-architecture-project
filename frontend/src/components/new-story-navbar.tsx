@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -9,10 +9,38 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { Textarea } from "./ui/textarea";
-import ArticleTagSelector from "./article-tag-selector";
+import ArticleTagSelector from "./article-category-selector";
 import ProfilePopover from "./profile-popover";
+import { Category, categoryApi } from "@/lib/categories";
 
-export default function NewStoryNavbar() {
+export default function NewStoryNavbar({
+  title,
+  content,
+  onSubmit,
+}: {
+  title: string;
+  content: string;
+  onSubmit: (categoryId: number) => void;
+}) {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const fetchCategories = async () => {
+    try {
+      setLoading(true);
+      const data = await categoryApi.getAll();
+      setCategories(data);
+    } catch (err) {
+      console.log("Error occured while fetching categories: " + err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   return (
     <div className="mb-4 mx-6">
       <div className="w-full pt-4 pb-2 max-w-[1032px] mx-auto flex justify-between border-b-1">
@@ -33,13 +61,26 @@ export default function NewStoryNavbar() {
               <DialogTitle>Story Preview</DialogTitle>
               <DialogDescription></DialogDescription>
               <div className="flex flex-col gap-6">
-                <Textarea
+                {/* <Textarea
                   name=""
                   id=""
                   placeholder="Write a preview subtitle"
+                /> */}
+                <ArticleTagSelector
+                  categories={categories}
+                  value={selectedCategoryId}
+                  onChange={(id) => setSelectedCategoryId(id)}
                 />
-                <ArticleTagSelector />
-                <Button variant={"outline"} className="rounded-full py-4.5">
+                <Button
+                  onClick={() => {
+                    if (selectedCategoryId) {
+                      onSubmit(Number(selectedCategoryId));
+                    } else {
+                      alert("Please select a category");
+                    }
+                  }}
+                  className="rounded-full py-4.5"
+                >
                   Publish Now
                 </Button>
               </div>
