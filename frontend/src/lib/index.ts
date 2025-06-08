@@ -1,5 +1,5 @@
 export const API_BASE_URL =
-  "http://ec2-3-70-132-193.eu-central-1.compute.amazonaws.com:8080/api";
+  "http://ec2-3-79-109-108.eu-central-1.compute.amazonaws.com:8080/api";
 
 export interface ApiResponse<T> {
   data: T;

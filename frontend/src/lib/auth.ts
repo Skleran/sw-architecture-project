@@ -57,7 +57,7 @@ export const authService = {
 
   login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
     const response = await fetch(
-      "http://ec2-3-70-132-193.eu-central-1.compute.amazonaws.com:8080/api/auth/login",
+      "http://ec2-3-79-109-108.eu-central-1.compute.amazonaws.com:8080/api/auth/login",
       {
         method: "POST",
         headers: {
@@ -78,7 +78,7 @@ export const authService = {
 
   register: async (userData: CreateUser): Promise<AuthResponse> => {
     const response = await fetch(
-      "http://ec2-3-70-132-193.eu-central-1.compute.amazonaws.com:8080/api/auth/register",
+      "http://ec2-3-79-109-108.eu-central-1.compute.amazonaws.com:8080/api/auth/register",
       {
         method: "POST",
         headers: {
