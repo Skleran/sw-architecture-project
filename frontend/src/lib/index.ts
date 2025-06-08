@@ -1,4 +1,3 @@
-// export const API_BASE_URL = "http://localhost:8082/api";
 export const API_BASE_URL =
   "http://ec2-3-70-132-193.eu-central-1.compute.amazonaws.com:8080/api";
 
