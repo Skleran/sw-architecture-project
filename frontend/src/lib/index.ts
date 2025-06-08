@@ -1,5 +1,4 @@
-export const API_BASE_URL =
-  "https://ec2-3-79-109-108.eu-central-1.compute.amazonaws.com:8443/api";
+export const API_BASE_URL = "https://api.erdemkoyuncu.com/api";
 
 export interface ApiResponse<T> {
   data: T;
