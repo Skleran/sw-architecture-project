@@ -17,7 +17,7 @@ type JwtPayload = {
 
 export default function ArticleCommentInput({ articleId }: Props) {
   const [content, setContent] = useState("");
-  const [userName, setUserName] = useState("");
+  // const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState(0);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function ArticleCommentInput({ articleId }: Props) {
       if (name) {
         console.log(name);
 
-        setUserName(name);
+        // setUserName(name);
 
         userApi.getByName(name).then((user) => {
           setUserId(user.userId);
@@ -83,7 +83,7 @@ export default function ArticleCommentInput({ articleId }: Props) {
       }
       setHasText(false);
       setIsExpanded(false);
-    } catch (err: any) {
+    } catch (err) {
       console.log("Failed to create comment:", err);
     }
   };

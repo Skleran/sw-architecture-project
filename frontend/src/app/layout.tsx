@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 //   src: "../../public/fonts/Satoshi-Variable.ttf",
 // });
 
-const inter = Inter({});
+const inter = Inter({ subsets: ["latin"], preload: true });
 
 export const metadata: Metadata = {
   title: {

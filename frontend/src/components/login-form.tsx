@@ -45,7 +45,7 @@ export function LoginForm({
         router.push("/");
       });
     } catch (err) {
-      setError("Invalid credentials");
+      setError("Invalid credentials" + err);
     } finally {
       setLoading(false);
     }

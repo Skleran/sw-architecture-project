@@ -63,8 +63,8 @@ import { LinkIcon } from "@/components/tiptap-icons/link-icon";
 
 // --- Hooks ---
 import { useMobile } from "@/hooks/use-mobile";
-import { useWindowSize } from "@/hooks/use-window-size";
-import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
+// import { useWindowSize } from "@/hooks/use-window-size";
+// import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
 
 // --- Components ---
 import { ThemeToggle } from "@/components/tiptap-templates/simple/theme-toggle";
@@ -75,7 +75,7 @@ import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 // --- Styles ---
 import "@/components/tiptap-templates/simple/simple-editor.scss";
 
-import content from "@/components/tiptap-templates/simple/data/content.json";
+// import content from "@/components/tiptap-templates/simple/data/content.json";
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -188,7 +188,7 @@ export function SimpleEditor({
   onContentChange?: (html: string) => void;
 }) {
   const isMobile = useMobile();
-  const windowSize = useWindowSize();
+  // const windowSize = useWindowSize();
   const [mobileView, setMobileView] = React.useState<
     "main" | "highlighter" | "link"
   >("main");
@@ -236,10 +236,10 @@ export function SimpleEditor({
     },
   });
 
-  const bodyRect = useCursorVisibility({
-    editor,
-    overlayHeight: toolbarRef.current?.getBoundingClientRect().height ?? 0,
-  });
+  // const bodyRect = useCursorVisibility({
+  //   editor,
+  //   overlayHeight: toolbarRef.current?.getBoundingClientRect().height ?? 0,
+  // });
 
   React.useEffect(() => {
     if (!isMobile && mobileView !== "main") {

@@ -12,7 +12,6 @@ import {
 import Link from "next/link";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
-import ChangeThemeTabs from "./ui/theme-selector";
 import ProfilePopover from "./profile-popover";
 // import UserBox from "../custom/user-box";
 // import api from "@/utils/api";

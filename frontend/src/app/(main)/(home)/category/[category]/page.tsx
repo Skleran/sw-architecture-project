@@ -11,18 +11,18 @@ type Props = {
 export default function Home(props: Props) {
   const { category } = use(props.params);
   const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
 
   const fetchArticles = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const data = await articleApi.getByCategory(category);
 
       setArticles(data);
     } catch (err) {
       console.log("Error occured while fetching articles: " + err);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
   useEffect(() => {

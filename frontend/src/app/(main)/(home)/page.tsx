@@ -6,17 +6,17 @@ import { Article, articleApi } from "@/lib/articles";
 
 export default function Home() {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
 
   const fetchArticles = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const data = await articleApi.getAll();
       setArticles(data);
     } catch (err) {
       console.log("Error occured while fetching articles: " + err);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
   useEffect(() => {

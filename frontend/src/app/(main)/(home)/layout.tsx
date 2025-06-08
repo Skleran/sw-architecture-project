@@ -11,17 +11,17 @@ export default function HomeLayout({
   children: React.ReactNode;
 }) {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
 
   const fetchCategories = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const data = await categoryApi.getAll();
       setCategories(data);
     } catch (err) {
       console.log("Error occured while fetching categories: " + err);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
   useEffect(() => {

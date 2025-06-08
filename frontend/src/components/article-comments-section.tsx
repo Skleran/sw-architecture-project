@@ -8,25 +8,23 @@ type Props = {
 
 export default function ArticleCommentsSection({ id }: Props) {
   const [comments, setComments] = useState<Comment[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  // const [loading, setLoading] = useState<boolean>(true);
 
-  const fetchComments = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const data = await commentApi.getByArticle(id);
-      setComments(data);
-    } catch (err: any) {
-      setError("Failed to load article");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
   useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        // setLoading(true);
+        const data = await commentApi.getByArticle(id);
+        setComments(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        // setLoading(false);
+      }
+    };
+
     fetchComments();
-  }, []);
+  }, [id]);
 
   return (
     <div>

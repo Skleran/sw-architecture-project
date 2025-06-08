@@ -4,9 +4,9 @@ import ArticleCommentInput from "@/components/article-comment-input";
 import ArticleCommentsSection from "@/components/article-comments-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { articleApi } from "@/lib/articles";
-import { userApi } from "@/lib/users";
-import { Bookmark, MessageCircle, Share, ThumbsUp } from "lucide-react";
+import { Article, articleApi } from "@/lib/articles";
+import { User, userApi } from "@/lib/users";
+import { Bookmark, Share } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
@@ -21,8 +21,8 @@ type Props = {
 
 export default function ArticleContent({ userName, articleId }: Props) {
   const [loading, setLoading] = useState(true);
-  const [articleData, setArticleData] = useState<any | null>(null);
-  const [userData, setUserData] = useState<any | null>(null);
+  const [articleData, setArticleData] = useState<Article | null>(null);
+  const [userData, setUserData] = useState<User | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function ArticleContent({ userName, articleId }: Props) {
         const user = await userApi.getByName(userName);
         setArticleData(article);
         setUserData(user);
-      } catch (err: any) {
+      } catch (err) {
         setError("Failed to load article");
         console.error(err);
       } finally {

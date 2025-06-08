@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "./button";
 import { MessageCircle, ThumbsUp } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+import { Avatar, AvatarFallback } from "./avatar";
 import { ReactionType } from "@/lib/reactions";
 
 type Article = {

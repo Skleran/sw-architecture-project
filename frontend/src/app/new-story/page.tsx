@@ -3,7 +3,6 @@ import "@/styles/editor.css";
 
 import NewStoryNavbar from "@/components/new-story-navbar";
 import { SimpleEditor } from "@/components/tiptap-templates/simple/simple-editor";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { articleApi } from "@/lib/articles";
 import { useEffect, useState } from "react";
@@ -18,7 +17,7 @@ type JwtPayload = {
 export default function Page() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState<number | null>(null);
   const router = useRouter();
@@ -51,7 +50,7 @@ export default function Page() {
       return;
     }
     try {
-      setLoading(true);
+      // setLoading(true);
       const article = await articleApi.create({
         title,
         content,
@@ -64,7 +63,7 @@ export default function Page() {
     } catch (err) {
       console.log("Failed to create article:", err);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 

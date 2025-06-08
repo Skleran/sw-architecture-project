@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { userApi } from "@/lib/users";
+import { User, userApi } from "@/lib/users";
 import { articleApi, Article } from "@/lib/articles";
 import ProfileHeader from "@/components/profile-header";
 import ProfileTagSelector from "@/components/profile-tag-selector";
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function ProfileClient({ userName }: Props) {
-  const [userData, setUserData] = useState<any>(null);
+  const [userData, setUserData] = useState<User>();
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -60,7 +60,7 @@ export default function ProfileClient({ userName }: Props) {
         </div>
         <div className="mt-[210px] lg:mt-[176px] mx-6 lg:mx-0">
           {articles.length > 0 ? (
-            articles.map((article: any) => (
+            articles.map((article: Article) => (
               <ProfileArticleCard
                 key={article.id}
                 data={{ ...article, name: userName }}

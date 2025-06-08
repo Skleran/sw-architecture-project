@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ChangeEvent, FocusEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import { Input } from "./input";
 
 interface FloatingLabelInputProps {
@@ -32,7 +32,7 @@ const FloatingLabelInput = ({
 
   const handleFocus = () => setIsFocused(true);
 
-  const handleBlur = (_e: FocusEvent<HTMLInputElement>) => {
+  const handleBlur = () => {
     if (!value) {
       setIsFocused(false);
     }

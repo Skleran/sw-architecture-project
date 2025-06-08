@@ -52,9 +52,9 @@ export function SignupForm({
       document.startViewTransition(() => {
         router.push("/");
       });
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      setError(err.message || "Registration failed");
+      setError("Registration failed" + err);
     } finally {
       setLoading(false);
     }

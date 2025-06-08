@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Angry, Frown, Heart, Laugh, Smile } from "lucide-react";
 import { JSX, useEffect, useState } from "react";
-import { reactionApi, ReactionType, Reaction } from "@/lib/reactions";
+import { reactionApi, ReactionType } from "@/lib/reactions";
 import { jwtDecode } from "jwt-decode";
 import { userApi } from "@/lib/users";
 

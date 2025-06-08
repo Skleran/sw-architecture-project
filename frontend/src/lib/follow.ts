@@ -20,4 +20,10 @@ export const followApi = {
         method: "POST",
       }
     ),
+
+  delete: (followingData: CreateFollowing): Promise<void> =>
+    protectedApiRequest<void>(
+      `/follow/${followingData.userId}/unfollow/${followingData.followingId}`,
+      { method: "DELETE" }
+    ),
 };

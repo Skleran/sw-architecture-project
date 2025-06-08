@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface InputProps
   extends Omit<React.ComponentProps<"textarea">, "type" | "onKeyDown"> {
-  type?: string; // Keep for compatibility but unused
+  type?: string;
   onKeyDown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/compat/router";
+import { useRouter } from "next/router";
 import type { LinkProps as NextLinkProps } from "next/link";
 
 // Extend NextLinkProps for our TransitionLink

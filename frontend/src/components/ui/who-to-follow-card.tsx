@@ -19,9 +19,9 @@ export default function WhoToFollowCard() {
             <div className="flex flex-col gap-1">
               <h2 className="text-base font-semibold">Erdem Koyuncu</h2>
               <p className="text-[13px] text-muted-foreground line-clamp-2">
-                Full Stack Developer | Angular & MEAN Stack Specialist | MEAN
-                Stack Developer | Blogger | Open to Collaboration Author of
-                "Code & Coffee: A Developer's Journey"
+                Full Stack Developer | Angular &amp; MEAN Stack Specialist |
+                MEAN Stack Developer | Blogger | Open to Collaboration Author of
+                &quot;Code &amp; Coffee: A Developer&apos;s Journey&quot;
               </p>
             </div>
           </Link>
