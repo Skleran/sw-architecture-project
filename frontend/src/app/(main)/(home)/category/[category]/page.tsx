@@ -5,7 +5,7 @@ import { use, useEffect, useState } from "react";
 import { Article, articleApi } from "@/lib/articles";
 
 type Props = {
-  params: Promise<{ category: string }>; // params is now async
+  params: Promise<{ category: string }>;
 };
 
 export default function Home(props: Props) {

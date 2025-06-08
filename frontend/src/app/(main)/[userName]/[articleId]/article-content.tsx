@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
 import "@/styles/editor.css";
 import ArticleReaction from "./article-reaction";
+import FollowButton from "@/components/ui/follow-button";
 
 type Props = {
   userName: string;
@@ -63,9 +64,7 @@ export default function ArticleContent({ userName, articleId }: Props) {
         <Link href={`/${userData.username}`}>
           <p className="text-sm">{userData.username}</p>
         </Link>
-        <Button variant="outline" className="rounded-full">
-          Follow
-        </Button>
+        <FollowButton username={userData.username} />
       </div>
 
       <div className="flex gap-3 mt-5 text-muted-foreground">
@@ -117,9 +116,7 @@ export default function ArticleContent({ userName, articleId }: Props) {
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>EK</AvatarFallback>
           </Avatar>
-          <Button variant="outline" size="lg" className="rounded-full">
-            Follow
-          </Button>
+          <FollowButton username={userData.username} />
         </div>
         <div className="flex flex-col">
           <h2 className="text-xl mt-4 space-x-1.5">

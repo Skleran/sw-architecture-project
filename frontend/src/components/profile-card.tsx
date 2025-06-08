@@ -1,5 +1,5 @@
-import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import FollowButton from "./ui/follow-button";
 
 interface UserData {
   name: string;
@@ -12,7 +12,6 @@ export default function ProfileCard({ UserData }: { UserData: UserData }) {
     <>
       <div className="w-full flex flex-col gap-4">
         <div>
-          {" "}
           <Avatar className="size-22">
             <AvatarImage src={UserData.imgSrc} />
             <AvatarFallback></AvatarFallback>
@@ -25,9 +24,7 @@ export default function ProfileCard({ UserData }: { UserData: UserData }) {
               {UserData.followers} followers
             </p>
           </div>
-          <Button variant={"default"} className="rounded-full">
-            Follow
-          </Button>
+          <FollowButton username={UserData.name} />
         </div>
       </div>
     </>

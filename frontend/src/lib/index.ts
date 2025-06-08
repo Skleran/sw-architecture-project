@@ -37,12 +37,26 @@ export const apiRequest = async <T>(
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  // If it's DELETE, don't parse JSON
-  if (options?.method === "DELETE") {
+  // For DELETE or responses with no body
+  if (
+    options?.method === "DELETE" ||
+    response.status === 204 ||
+    response.headers.get("Content-Length") === "0"
+  ) {
     return undefined as T;
   }
 
-  return response.json();
+  const contentType = response.headers.get("content-type");
+  if (contentType && contentType.includes("application/json")) {
+    try {
+      return await response.json();
+    } catch (e) {
+      console.warn("Response is not valid JSON", e);
+      return undefined as T;
+    }
+  }
+
+  return undefined as T;
 };
 
 export const protectedApiRequest = async <T>(
