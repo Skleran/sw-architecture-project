@@ -56,13 +56,16 @@ export const authService = {
   },
 
   login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
-    const response = await fetch("http://localhost:8082/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    });
+    const response = await fetch(
+      "http://ec2-3-70-132-193.eu-central-1.compute.amazonaws.com:8080/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Login failed");
@@ -74,13 +77,16 @@ export const authService = {
   },
 
   register: async (userData: CreateUser): Promise<AuthResponse> => {
-    const response = await fetch("http://localhost:8082/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    const response = await fetch(
+      "http://ec2-3-70-132-193.eu-central-1.compute.amazonaws.com:8080/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Registration failed");
