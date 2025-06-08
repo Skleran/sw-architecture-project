@@ -4,15 +4,10 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-interface Tag {
-  id: string;
-  name: string;
-  slug: string;
-}
+import { Category } from "@/lib/categories";
 
 interface TagSelectorProps {
-  tags: Tag[];
+  tags: Category[];
 }
 
 const TagSelector: React.FC<TagSelectorProps> = ({ tags }) => {
@@ -92,10 +87,10 @@ const TagSelector: React.FC<TagSelectorProps> = ({ tags }) => {
       >
         {tags.map((tag) => (
           <Link
-            href={`/tag/${tag.slug}`}
+            href={`/category/${tag.name}`}
             key={tag.id}
             className={`mx-4 py-4 cursor-pointer min-w-fit text-sm transition-colors hover:text-foreground/80 ${
-              pathname === `/tag/${tag.slug}`
+              pathname === `/category/${tag.name}`
                 ? "text-foreground border-b border-foreground"
                 : "text-muted-foreground"
             }`}

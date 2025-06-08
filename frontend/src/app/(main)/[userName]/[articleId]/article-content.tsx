@@ -96,7 +96,7 @@ export default function ArticleContent({ userName, articleId }: Props) {
       </article>
 
       <div className="flex justify-between flex-wrap gap-2 mt-10">
-        <Link href={`/tag/${articleData.category}`}>
+        <Link href={`/category/${articleData.category}`}>
           <Button variant="ghost" className="rounded-full bg-accent">
             <p>{articleData.category}</p>
           </Button>

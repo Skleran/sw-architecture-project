@@ -62,13 +62,6 @@ export default function ProfilePopover() {
                     <p className="truncate max-w-[70px] text-lg">{userName}</p>
                   </Button>
                 </Link>
-
-                {/* <Button
-                  variant={"link"}
-                  className="text-sm text-muted-foreground hover:cursor-pointer hover: p-0 m-0 h-fit"
-                >
-                  skleran
-                </Button> */}
               </div>
               <ChangeThemeTabs animationKey="change-theme" />
             </div>

@@ -61,11 +61,6 @@ export default function NewStoryNavbar({
               <DialogTitle>Story Preview</DialogTitle>
               <DialogDescription></DialogDescription>
               <div className="flex flex-col gap-6">
-                {/* <Textarea
-                  name=""
-                  id=""
-                  placeholder="Write a preview subtitle"
-                /> */}
                 <ArticleTagSelector
                   categories={categories}
                   value={selectedCategoryId}

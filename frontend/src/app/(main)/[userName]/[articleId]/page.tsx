@@ -1,11 +1,14 @@
+"use client";
+
+import { use } from "react";
 import ArticleContent from "./article-content";
 
 type Props = {
-  params: { userName: string; articleId: number }; // note: comes as string
+  params: Promise<{ userName: string; articleId: string }>;
 };
 
-export default function ArticlePage({ params }: Props) {
-  const articleId = Number(params.articleId);
+export default function ArticlePage(props: Props) {
+  const { userName, articleId } = use(props.params);
 
-  return <ArticleContent userName={params.userName} articleId={articleId} />;
+  return <ArticleContent userName={userName} articleId={Number(articleId)} />;
 }
