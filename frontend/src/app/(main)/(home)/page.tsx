@@ -3,6 +3,7 @@
 import HomeArticleCard from "@/components/ui/home-article-card";
 import { useEffect, useState } from "react";
 import { Article, articleApi } from "@/lib/articles";
+import { extractFirstImageSrc } from "@/lib/get-first-image";
 
 export default function Home() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -12,7 +13,11 @@ export default function Home() {
     try {
       // setLoading(true);
       const data = await articleApi.getAll();
-      setArticles(data);
+      const enriched = data.map((a: Article) => ({
+        ...a,
+        coverImage: extractFirstImageSrc(a.content),
+      }));
+      setArticles(enriched);
     } catch (err) {
       console.log("Error occured while fetching articles: " + err);
     } finally {

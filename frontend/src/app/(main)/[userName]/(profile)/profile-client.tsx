@@ -7,6 +7,7 @@ import ProfileHeader from "@/components/profile-header";
 import ProfileTagSelector from "@/components/profile-tag-selector";
 import ProfileSidebar from "@/components/profile-sidebar";
 import ProfileArticleCard from "@/components/ui/profile-article-card";
+import { extractFirstImageSrc } from "@/lib/get-first-image";
 
 interface Props {
   userName: string;
@@ -23,7 +24,11 @@ export default function ProfileClient({ userName }: Props) {
         const user = await userApi.getByName(userName);
         const fetchedArticles = await articleApi.getByAuthor(user.userId);
         setUserData(user);
-        setArticles(fetchedArticles);
+        const enriched = fetchedArticles.map((a: Article) => ({
+          ...a,
+          coverImage: extractFirstImageSrc(a.content),
+        }));
+        setArticles(enriched);
       } catch (err) {
         console.error("Failed to fetch user or articles:", err);
       } finally {
@@ -45,7 +50,7 @@ export default function ProfileClient({ userName }: Props) {
   const transformedUserData = {
     name: userData.username,
     imgSrc: "https://randomuser.me/api/portraits/lego/2.jpg",
-    followers: 31,
+    followers: 34,
     email: userData.email,
     role: userData.role,
     userId: userData.userId,

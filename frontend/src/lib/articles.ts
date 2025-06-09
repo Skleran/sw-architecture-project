@@ -9,6 +9,7 @@ export interface Article {
   authorId: number;
   authorName: string;
   reactions: ReactionType[];
+  coverImage?: string | null;
 }
 
 export interface CreateArticle {

@@ -13,6 +13,7 @@ import ChangeThemeTabs from "./ui/theme-selector";
 import { UserRound } from "lucide-react";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 type JwtPayload = {
   sub: string;
@@ -43,6 +44,7 @@ export default function ProfilePopover() {
   const handleSignOut = () => {
     localStorage.removeItem("auth_token"); // Remove token
     router.push("/login"); // Redirect
+    toast.success("Sign out successful, see you again!");
   };
 
   return (

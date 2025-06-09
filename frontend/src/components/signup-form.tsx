@@ -10,6 +10,7 @@ import { motion } from "motion/react";
 import FloatingLabelInput from "./ui/floating-input";
 import Link from "next/link";
 import { authService } from "@/lib/auth";
+import { toast } from "sonner";
 
 export function SignupForm({
   className,
@@ -45,12 +46,14 @@ export function SignupForm({
     try {
       await authService.register(credentials);
       if (!document.startViewTransition) {
-        router.push("/");
+        router.push("/login");
+        toast.success("Registeration successful, you can now login.");
         return;
       }
 
       document.startViewTransition(() => {
-        router.push("/");
+        router.push("/login");
+        toast.success("Registeration successful, you can now login.");
       });
     } catch (err) {
       console.error(err);

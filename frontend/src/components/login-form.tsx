@@ -10,6 +10,7 @@ import FloatingLabelInput from "./ui/floating-input";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "./auth-provider";
+import { toast } from "sonner";
 
 export function LoginForm({
   className,
@@ -38,11 +39,13 @@ export function LoginForm({
       await login(credentials);
       if (!document.startViewTransition) {
         router.push("/");
+        toast.success("You are now logged in, welcome!");
         return;
       }
 
       document.startViewTransition(() => {
         router.push("/");
+        toast.success("You are now logged in, welcome!");
       });
     } catch (err) {
       setError("Invalid credentials" + err);

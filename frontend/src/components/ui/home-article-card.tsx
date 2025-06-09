@@ -11,7 +11,7 @@ type Article = {
   category: string;
   reactions: ReactionType[];
   // excerpt: string;
-  // coverImage: string;
+  coverImage?: string | null;
   // release: string;
   // likes: number;
   // comments: number;
@@ -72,7 +72,7 @@ export default function HomeArticleCard({ data }: { data: Article }) {
             </div>
 
             <div className="hidden md:flex items-center gap-5 text-muted-foreground text-[13px]">
-              <p>{/* {data.release} */} 31h ago</p>
+              <p>{/* {data.release} */} 12h ago</p>
               <div className="flex gap-1 items-center">
                 <ThumbsUp size={15} />
                 <p>{/* {data.likes} */}123</p>
@@ -84,18 +84,20 @@ export default function HomeArticleCard({ data }: { data: Article }) {
             </div>
           </div>
           <div className="w-full items-center flex pl-4 md:pl-10 justify-center">
-            <div className="">
-              {/* <img
+            {data.coverImage ? (
+              <img
                 src={data.coverImage}
-                alt="cover"
-                className="object-contain md:object-cover rounded-sm max-h-[100px] md:max-h-[120px] md:min-w-[120px]"
-              /> */}
-            </div>
+                alt={data.title}
+                className="object-cover rounded-sm max-h-[120px] md:min-w-[120px]"
+              />
+            ) : (
+              <div className=" rounded-sm w-[120px] h-[100px]" />
+            )}
           </div>
 
           <div className="w-full md:hidden flex justify-between mt-4 col-span-2 md:col-span-1">
             <div className="flex items-center gap-5 text-muted-foreground text-[13px]">
-              <p>{/* {data.release} */} 31h ago</p>
+              <p>{/* {data.release} */} 12h ago</p>
               <div className="flex gap-1 items-center">
                 <ThumbsUp size={15} />
                 <p>{/* {data.likes} */}123</p>

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 import { userApi } from "@/lib/users";
+import { toast } from "sonner";
 
 type JwtPayload = {
   sub: string;
@@ -58,8 +59,9 @@ export default function Page() {
         categoryId,
       });
 
-      console.log("Created article:", article);
+      // console.log("Created article:", article);
       router.push(`/${userName}`);
+      toast.success("Article published successfully.");
     } catch (err) {
       console.log("Failed to create article:", err);
     } finally {

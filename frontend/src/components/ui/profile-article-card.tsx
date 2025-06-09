@@ -8,7 +8,7 @@ type Article = {
   title: string;
   content: string;
   // excerpt: string;
-  // coverImage: string;
+  coverImage?: string | null;
   // release: string;
   // likes: number;
   // comments: number;
@@ -28,7 +28,9 @@ export default function ProfileArticleCard({ data }: { data: Article }) {
                 {data.title}
               </h2>
               <div className="line-clamp-2 text-muted-foreground leading-5.5">
-                {data.content}
+                {/* {data.content} */}Lorem, ipsum dolor sit amet consectetur
+                adipisicing elit. Maxime ullam corrupti, repellat itaque
+                consectetur maiores.
               </div>
             </div>
 
@@ -48,14 +50,15 @@ export default function ProfileArticleCard({ data }: { data: Article }) {
             </div>
           </div>
           <div className="w-full items-center flex pl-4 md:pl-10 justify-center">
-            <div className="">
+            {data.coverImage ? (
               <img
-                // src={data.coverImage}
-                src={"https://randomuser.me/api/portraits/lego/2.jpg"}
-                alt="cover"
-                className="object-contain md:object-cover rounded-sm max-h-[100px] md:max-h-[120px] md:min-w-[120px]"
+                src={data.coverImage}
+                alt={data.title}
+                className="object-cover rounded-sm max-h-[120px] md:min-w-[120px]"
               />
-            </div>
+            ) : (
+              <div className=" rounded-sm w-[120px] h-[100px]" />
+            )}
           </div>
 
           <div className="w-full md:hidden flex justify-between mt-4 col-span-2 md:col-span-1">
