@@ -6,15 +6,18 @@ import { jwtDecode } from "jwt-decode";
 import { userApi } from "@/lib/users";
 import { followApi } from "@/lib/follow";
 
+import { cn } from "@/lib/utils";
+
 type JwtPayload = {
   sub: string;
 };
 
 type Props = {
   username: string;
+  className?: string; // Add this
 };
 
-export default function FollowButton({ username }: Props) {
+export default function FollowButton({ username, className }: Props) {
   const [userId, setUserId] = useState<number | null>(null);
   const [following, setFollowing] = useState<boolean>(false);
 
@@ -76,7 +79,7 @@ export default function FollowButton({ username }: Props) {
   return (
     <Button
       variant="secondary"
-      className="rounded-full"
+      className={cn("rounded-full", className)}
       onClick={!following ? handleFollow : undefined}
     >
       {following ? "Following" : "Follow"}

@@ -62,7 +62,7 @@ const Navbar = () => {
           { id: "2", name: "Signup" },
           { id: "3", name: "Plans" },
           { id: "4", name: "New-Story" },
-          { id: "5", name: "Business" },
+          { id: "5", name: "Notifications" },
         ];
 
         setCategories(mockCategories);

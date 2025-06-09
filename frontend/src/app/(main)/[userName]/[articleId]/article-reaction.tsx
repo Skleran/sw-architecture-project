@@ -6,9 +6,11 @@ import { JSX, useEffect, useState } from "react";
 import { reactionApi, ReactionType } from "@/lib/reactions";
 import { jwtDecode } from "jwt-decode";
 import { userApi } from "@/lib/users";
+import { notificationApi } from "@/lib/notifications";
 
 type Props = {
   articleId: number;
+  authorId: number;
 };
 
 type JwtPayload = {
@@ -32,7 +34,16 @@ const reactionOrder: ReactionType[] = [
   "SAD",
 ];
 
-export default function ArticleReaction({ articleId }: Props) {
+const reactionMessages: Record<ReactionType, string> = {
+  LOVE: "Your article got a new love reaction!",
+  FUNNY: "Your article got a new funny reaction!",
+  LIKE: "Your article got a new like!",
+  DISLIKE: "Your article got a new dislike!",
+  SAD: "Your article got a new sad reaction!",
+  SUPPORT: "Your article got a new support reaction!",
+};
+
+export default function ArticleReaction({ articleId, authorId }: Props) {
   const [userId, setUserId] = useState<number | null>(null);
   const [userReacted, setUserReacted] = useState<ReactionType | null>(null);
   const [reactionCounts, setReactionCounts] = useState<
@@ -117,12 +128,21 @@ export default function ArticleReaction({ articleId }: Props) {
         [type]: prev[type] + 1,
       }));
       setUserReacted(type);
+
+      await notificationApi.create({
+        message: reactionMessages[type],
+        type,
+        userId: 39,
+        articleId,
+      });
     } catch (err) {
       console.error("Reaction failed:", err);
     } finally {
       setSubmitting(false);
     }
   };
+
+  // const handleNotification
 
   return (
     <div className="flex flex-row gap-1">

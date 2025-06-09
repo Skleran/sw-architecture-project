@@ -80,6 +80,12 @@ export default function ProfilePopover() {
                 Profile
               </Link>
               <Link
+                href={"/notifications"}
+                className="text-sm text-foreground/60 transition-colors hover:text-foreground/80"
+              >
+                Notifications
+              </Link>
+              <Link
                 href={"/plans"}
                 className="text-sm text-foreground/60 transition-colors hover:text-foreground/80"
               >

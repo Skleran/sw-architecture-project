@@ -2,7 +2,7 @@ import { protectedApiRequest } from ".";
 import { ReactionType } from "./reactions";
 
 export interface Notification {
-  id: number;
+  notificationId: number;
   message: string;
   type: ReactionType;
   userId: number;
@@ -10,9 +10,25 @@ export interface Notification {
   read: boolean;
 }
 
-export const notificationApi = {
-  getNotificationsApi: (id: number): Promise<Notification[]> =>
-    protectedApiRequest<Notification[]>(`/notifications/all/${id}`),
+export interface CreateNotification {
+  message: string;
+  type: ReactionType | null;
+  userId: number;
+  articleId: number | null;
+}
 
-  // create: ()
+export const notificationApi = {
+  getNotificationsApi: (userId: number): Promise<Notification[]> =>
+    protectedApiRequest<Notification[]>(`/notifications/all/${userId}`),
+
+  create: (notificationData: CreateNotification): Promise<void> =>
+    protectedApiRequest<void>("/notifications/create", {
+      method: "POST",
+      body: JSON.stringify(notificationData),
+    }),
+
+  read: (notificationId: number): Promise<void> =>
+    protectedApiRequest<void>(`/notifications/read/${notificationId}`, {
+      method: "POST",
+    }),
 };

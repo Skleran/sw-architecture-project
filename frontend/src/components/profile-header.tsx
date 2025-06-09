@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { Ellipsis } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import FollowButton from "./ui/follow-button";
 
 interface UserData {
   name: string;
@@ -36,9 +37,7 @@ export default function ProfileHeader({ UserData }: { UserData: UserData }) {
           </div>
         </div>
         <div className="lg:hidden">
-          <Button variant={"default"} className="rounded-full w-full p-5">
-            Follow
-          </Button>
+          <FollowButton username={UserData.name} className="w-full" />
         </div>
       </div>
     </>

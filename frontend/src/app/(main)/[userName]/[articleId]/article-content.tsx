@@ -24,6 +24,7 @@ export default function ArticleContent({ userName, articleId }: Props) {
   const [articleData, setArticleData] = useState<Article | null>(null);
   const [userData, setUserData] = useState<User | null>(null);
   const [error, setError] = useState("");
+  const [authorId, setAuthorId] = useState(Number);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,6 +33,8 @@ export default function ArticleContent({ userName, articleId }: Props) {
         const user = await userApi.getByName(userName);
         setArticleData(article);
         setUserData(user);
+        if (!articleData) return;
+        setAuthorId(articleData.authorId);
       } catch (err) {
         setError("Failed to load article");
         console.error(err);
@@ -139,7 +142,7 @@ export default function ArticleContent({ userName, articleId }: Props) {
         <div className="flex flex-col gap-2 mt-4">
           <p className="text-lg ml-2.75 font-semibold">React with emoji!</p>
           <div className="flex items-center gap-3 text-muted-foreground">
-            <ArticleReaction articleId={articleId} />
+            <ArticleReaction articleId={articleId} authorId={authorId} />
           </div>
         </div>
 
