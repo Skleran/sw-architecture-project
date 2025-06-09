@@ -19,6 +19,7 @@ import { Underline } from "@tiptap/extension-underline";
 import { Link } from "@/components/tiptap-extension/link-extension";
 import { Selection } from "@/components/tiptap-extension/selection-extension";
 import { TrailingNode } from "@/components/tiptap-extension/trailing-node-extension";
+import ImageResize from "tiptap-extension-resize-image";
 
 // --- UI Primitives ---
 import { Button } from "@/components/tiptap-ui-primitive/button";
@@ -206,6 +207,7 @@ export function SimpleEditor({
     },
     extensions: [
       StarterKit,
+      ImageResize,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Underline,
       TaskList,
