@@ -13,10 +13,15 @@ import DOMPurify from "dompurify";
 import "@/styles/editor.css";
 import ArticleReaction from "./article-reaction";
 import FollowButton from "@/components/ui/follow-button";
+import { jwtDecode } from "jwt-decode";
 
 type Props = {
   userName: string;
   articleId: number;
+};
+
+type JwtPayload = {
+  sub: string;
 };
 
 export default function ArticleContent({ userName, articleId }: Props) {
@@ -24,7 +29,28 @@ export default function ArticleContent({ userName, articleId }: Props) {
   const [articleData, setArticleData] = useState<Article | null>(null);
   const [userData, setUserData] = useState<User | null>(null);
   const [error, setError] = useState("");
-  const [authorId, setAuthorId] = useState(Number);
+  const [loggedInUserName, setLoggedInUserName] = useState<string | null>(null);
+  const [loggedInUserId, setLoggedInUserId] = useState<number | null>(null);
+  const [isAuthor, setIsAuthor] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("auth_token");
+    if (!token) return;
+
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
+      const username = decoded.sub;
+      setLoggedInUserName(username);
+
+      if (username) {
+        userApi.getByName(username).then((user) => {
+          setLoggedInUserId(user.userId);
+        });
+      }
+    } catch (err) {
+      console.error("Invalid token", err);
+    }
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,8 +59,6 @@ export default function ArticleContent({ userName, articleId }: Props) {
         const user = await userApi.getByName(userName);
         setArticleData(article);
         setUserData(user);
-        if (!articleData) return;
-        setAuthorId(articleData.authorId);
       } catch (err) {
         setError("Failed to load article");
         console.error(err);
@@ -45,6 +69,12 @@ export default function ArticleContent({ userName, articleId }: Props) {
 
     fetchData();
   }, [userName, articleId]);
+
+  useEffect(() => {
+    if (articleData && loggedInUserId) {
+      setIsAuthor(articleData.authorId === loggedInUserId);
+    }
+  }, [articleData, loggedInUserId]);
 
   if (loading) return <div className="p-6">Loading article...</div>;
   if (error) return <div className="p-6 text-red-500">{error}</div>;
@@ -76,9 +106,6 @@ export default function ArticleContent({ userName, articleId }: Props) {
     <div className="flex flex-col w-full mx-6 max-w-[680px] mt-6 mb-16 border-b pb-16">
       <div className="flex flex-col gap-1.75">
         <h1 className="text-3xl font-extrabold">{articleData.title}</h1>
-        {/* <h2 className="text-lg text-muted-foreground leading-6">
-          This is the subtitle of the article.
-        </h2> */}
       </div>
 
       <div className="flex gap-3 items-center mt-6">
@@ -92,7 +119,7 @@ export default function ArticleContent({ userName, articleId }: Props) {
         <FollowButton username={userData.username} />
       </div>
 
-      <div className="flex gap-3 mt-5 text-muted-foreground">
+      <div className="flex justify-between gap-3 mt-5 text-muted-foreground">
         <Button
           variant="ghost"
           size="lg"
@@ -102,14 +129,19 @@ export default function ArticleContent({ userName, articleId }: Props) {
           <Share />
           <p>Share</p>
         </Button>
-        {/* <Button
-          variant="ghost"
-          size="lg"
-          className="rounded-full border-1 border-accent"
-        >
-          <Bookmark />
-          <p>Save</p>
-        </Button> */}
+
+        {/* Show this button if user is the author of the viewed article */}
+        {isAuthor && (
+          <Link href={`/update/${articleId}`}>
+            <Button
+              variant="default"
+              size="lg"
+              className="rounded-full border-1 border-accent"
+            >
+              Update Article
+            </Button>
+          </Link>
+        )}
       </div>
 
       <article className="prose prose-stone dark:prose-invert mt-8 min-h-[50vh] border-b-1 max-w-none">
@@ -127,9 +159,6 @@ export default function ArticleContent({ userName, articleId }: Props) {
           </Button>
         </Link>
         <div className="flex items-center">
-          {/* <Button variant="ghost" size="icon">
-            <Bookmark />
-          </Button> */}
           <Button variant="ghost" size="icon" onClick={handleShare}>
             <Share />
           </Button>
@@ -165,7 +194,10 @@ export default function ArticleContent({ userName, articleId }: Props) {
         <div className="flex flex-col gap-2 mt-4">
           <p className="text-lg ml-2.75 font-semibold">React with emoji!</p>
           <div className="flex items-center gap-3 text-muted-foreground">
-            <ArticleReaction articleId={articleId} authorId={authorId} />
+            <ArticleReaction
+              articleId={articleId}
+              authorId={articleData.authorId}
+            />
           </div>
         </div>
 

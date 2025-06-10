@@ -19,6 +19,13 @@ export interface CreateArticle {
   categoryId: number;
 }
 
+export interface UpdateArticle {
+  title: string;
+  content: string;
+  categoryId: number;
+  articleId: number;
+}
+
 export const articleApi = {
   getByAuthor: (authorId: number): Promise<Article[]> =>
     protectedApiRequest<Article[]>(`/users/${authorId}/articles`),
@@ -40,4 +47,14 @@ export const articleApi = {
 
   getByCategory: (category: string): Promise<Article[]> =>
     protectedApiRequest<Article[]>(`/articles/category/name/${category}`),
+
+  update: (articleData: UpdateArticle): Promise<Article> => {
+    return protectedApiRequest<Article>(
+      `/articles/${articleData.articleId}/update`,
+      {
+        method: "PUT",
+        body: JSON.stringify(articleData),
+      }
+    );
+  },
 };

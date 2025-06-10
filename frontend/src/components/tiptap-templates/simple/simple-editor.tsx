@@ -184,8 +184,10 @@ const MobileToolbarContent = ({
 );
 
 export function SimpleEditor({
+  content,
   onContentChange,
 }: {
+  content?: string;
   onContentChange?: (html: string) => void;
 }) {
   const isMobile = useMobile();
@@ -230,7 +232,7 @@ export function SimpleEditor({
       Link.configure({ openOnClick: false }),
     ],
     // content: content,
-    content: "Tell your story...",
+    content: content || "Tell your story...",
     onUpdate: ({ editor }) => {
       console.log(editor.getHTML());
       const html = editor.getHTML();
@@ -248,6 +250,12 @@ export function SimpleEditor({
       setMobileView("main");
     }
   }, [isMobile, mobileView]);
+
+  React.useEffect(() => {
+    if (editor && content !== undefined && content !== editor.getHTML()) {
+      editor.commands.setContent(content || "Tell your story...");
+    }
+  }, [editor, content]);
 
   return (
     <EditorContext.Provider value={{ editor }}>
