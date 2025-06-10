@@ -55,7 +55,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+        <div className="animate-spin rounded-full h-32 w-32 bg-[#ffffff] dark:bg-[#0a0a0a] border-b-2 border-[#0a0a0a] dark:border-[#ffffff]"></div>
       </div>
     );
   }

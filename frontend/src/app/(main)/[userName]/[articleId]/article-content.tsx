@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Article, articleApi } from "@/lib/articles";
 import { User, userApi } from "@/lib/users";
-import { Bookmark, Share } from "lucide-react";
+import { Share } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
@@ -50,13 +50,35 @@ export default function ArticleContent({ userName, articleId }: Props) {
   if (error) return <div className="p-6 text-red-500">{error}</div>;
   if (!articleData || !userData) return null;
 
+  const handleShare = async () => {
+    const shareData = {
+      title: articleData.title,
+      text: `Check out this article: ${articleData.title}`,
+      url: window.location.href,
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        console.log("Share cancelled or failed:", error);
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Link copied to clipboard!");
+      } catch (error) {
+        alert(`Copy this link: ${window.location.href}`);
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col w-full mx-6 max-w-[680px] mt-6 mb-16 border-b pb-16">
       <div className="flex flex-col gap-1.75">
         <h1 className="text-3xl font-extrabold">{articleData.title}</h1>
-        <h2 className="text-lg text-muted-foreground leading-6">
+        {/* <h2 className="text-lg text-muted-foreground leading-6">
           This is the subtitle of the article.
-        </h2>
+        </h2> */}
       </div>
 
       <div className="flex gap-3 items-center mt-6">
@@ -75,21 +97,22 @@ export default function ArticleContent({ userName, articleId }: Props) {
           variant="ghost"
           size="lg"
           className="rounded-full border-1 border-accent"
+          onClick={handleShare}
         >
           <Share />
           <p>Share</p>
         </Button>
-        <Button
+        {/* <Button
           variant="ghost"
           size="lg"
           className="rounded-full border-1 border-accent"
         >
           <Bookmark />
           <p>Save</p>
-        </Button>
+        </Button> */}
       </div>
 
-      <article className="prose prose-stone dark:prose-invert mt-8 min-h-screen border-b-1 max-w-none">
+      <article className="prose prose-stone dark:prose-invert mt-8 min-h-[50vh] border-b-1 max-w-none">
         <div
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(articleData.content),
@@ -104,10 +127,10 @@ export default function ArticleContent({ userName, articleId }: Props) {
           </Button>
         </Link>
         <div className="flex items-center">
-          <Button variant="ghost" size="icon">
+          {/* <Button variant="ghost" size="icon">
             <Bookmark />
-          </Button>
-          <Button variant="ghost" size="icon">
+          </Button> */}
+          <Button variant="ghost" size="icon" onClick={handleShare}>
             <Share />
           </Button>
         </div>

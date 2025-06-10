@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { userApi } from "@/lib/users";
 import { commentApi } from "@/lib/comments";
 import { jwtDecode } from "jwt-decode";
+import { toast } from "sonner";
 
 type Props = {
   articleId: number;
@@ -75,6 +76,7 @@ export default function ArticleCommentInput({ articleId }: Props) {
         content,
       });
       console.log("Comment created:", newComment);
+      toast.success("Comment created!");
 
       setContent("");
       if (textareaRef.current) {

@@ -14,7 +14,7 @@ type JwtPayload = {
 
 type Props = {
   username: string;
-  className?: string; // Add this
+  className?: string;
 };
 
 export default function FollowButton({ username, className }: Props) {

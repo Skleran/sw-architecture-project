@@ -172,7 +172,7 @@ export const handleImageUpload = async (
       throw new Error(data.error?.message || "Image upload failed");
     }
 
-    return data.secure_url; // ✅ This is the URL to use in your editor
+    return data.secure_url;
   } catch (err: any) {
     console.error("Upload error:", err);
     throw err;
